@@ -1,8 +1,10 @@
+import Navbar from './component/Navbar';
+
 function App() {
   return (
-    <>
-      <div>Welcome to full stack real estate project</div>
-    </>
+    <div className="bg-gray-800 text-white">
+      <Navbar />
+    </div>
   );
 }
 
