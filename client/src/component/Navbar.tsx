@@ -6,7 +6,7 @@ import gsap from 'gsap';
 const Navbar = () => {
   const [showAd, setShowAd] = useState<boolean>(true);
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
-  const sidebarRef = useRef(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   gsap.registerPlugin(useGSAP);
 
@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center bg-[#1A1A1A] bg-[url('./Abstract-Design.png')] px-4 md:px-6 py-4 md:py-2">
           <div className="flex-1 text-center">
             <p className="font-medium text-xs md:text-sm xl:text-lg">
-              Dicover Your Dream Property with Estatein{' '}
+              Discover Your Dream Property with Estatein{' '}
               <a className="underline">Learn More</a>
             </p>
           </div>
@@ -40,7 +40,7 @@ const Navbar = () => {
           </button>
         </div>
       )}
-      <nav className="relative flex justify-between items-center bg-[#1A1A1A] px-4 md:px-10 py-4 md:py-4 border border-gray-700 overflow-hidden">
+      <nav className="relative flex justify-between items-center bg-[#1A1A1A] px-4 md:px-10 py-4 md:py-4 border-gray-700 border-y overflow-hidden">
         <div className="flex items-center">
           <img
             src="./Logo.png"
@@ -77,7 +77,7 @@ const Navbar = () => {
 
         <div
           ref={sidebarRef}
-          className="md:hidden top-0 right-0 absolute flex flex-col justify-between items-center gap-y-4 bg-[#1A1A1A] px-4 md:px-10 py-4 md:py-4 w-1/2 h-screen translate-x-full"
+          className="md:hidden top-0 right-0 z-10 fixed flex flex-col justify-between items-center gap-y-4 bg-[#1A1A1A] px-4 md:px-10 py-20 md:py-4 w-1/2 h-screen translate-x-full"
         >
           <button
             onClick={() => setShowSidebar(false)}
