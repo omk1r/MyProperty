@@ -1,3 +1,5 @@
+import FAQCarousel from '../component/FaqCarousel';
+import Footer from '../component/Footer';
 import PropertyCarousel from '../component/PropertyCarousel';
 import TestimonialCarousel from '../component/TestimonialCarousal';
 
@@ -156,7 +158,7 @@ const Home = () => {
           className="flex justify-center items-center col-span-2 md:col-span-1 my-3"
         >
           <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-[#262626] rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
-            View All Testimonials
+            View All FAQ's
           </button>
         </div>
 
@@ -167,6 +169,39 @@ const Home = () => {
           <TestimonialCarousel />
         </div>
       </div>
+
+      {/* FAQ's */}
+      <div className="grid grid-cols-4 my-10 md:my-16 px-6">
+        <div id="div1" className="col-span-4 md:col-span-3 md:mx-3">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
+            Frequently Asked Questions
+          </h3>
+          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
+            Find answers to common questions about Estatein's services, property
+            listings, and the real estate process. We're here to provide clarity
+            and assist you every step of the way.
+          </p>
+        </div>
+
+        <div
+          id="div3"
+          className="flex justify-center items-center col-span-2 md:col-span-1 my-3"
+        >
+          <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-[#262626] rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
+            View All Testimonials
+          </button>
+        </div>
+
+        <div
+          id="div2"
+          className="col-span-4 py-6 border-[#262626] border-b overflow-hidden"
+        >
+          <FAQCarousel />
+        </div>
+      </div>
+
+      {/* footer */}
+      <Footer />
     </>
   );
 };
