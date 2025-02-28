@@ -106,43 +106,49 @@ const Home = () => {
       </div>
 
       {/* featured properties */}
-      <div className="my-10 px-6">
-        <div>
-          <h3 className="font-semibold text-3xl">Featured Properties</h3>
-          <p className="my-3 font-medium text-[#999999] text-sm">
+      <div className="grid grid-cols-4 my-10 px-6">
+        <div id="div1" className="col-span-4 md:col-span-3">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
+            Featured Properties
+          </h3>
+          <p className="my-3 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
             Explore our handpicked selection of featured properties. Each
             listing offers a glimpse into exceptional homes and investments
             available through MyProperty.
           </p>
         </div>
 
-        <div className="py-6 border-gray-700 border-b">
+        <div id="div2" className="col-span-4 py-6 border-gray-700 border-b">
           <div className="flex flex-col items-center px-6 py-6 border border-gray-700 rounded-xl">
-            <img src="./property-1.png" alt="" />
-            <h6 className="mt-5 w-full font-semibold text-lg">
+            <img src="./property-1.png" alt="" className="w-full" />
+            <h6 className="mt-5 w-full font-semibold text-lg md:text-xl">
               Rustic Retreat Cottage
             </h6>
-            <p className="mt-2 font-medium text-[#999999] text-sm">
+            <p className="mt-2 font-medium text-[#999999] text-sm md:text-base">
               An elegant 3-bedroom, 2.5-bathroom townhouse in a gated
               community...
             </p>
 
             <div className="flex flex-row flex-wrap justify-evenly items-center my-6 w-full">
-              <div className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl">
+              <div className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl font-medium text-sm xl:text-lg">
                 4-Bedroom
               </div>
-              <div className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl">
+              <div className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl font-medium text-sm xl:text-lg">
                 3-Bathroom
               </div>
-              <div className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl">
+              <div className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl font-medium text-sm xl:text-lg">
                 Villa
               </div>
             </div>
 
             <div className="flex flex-row justify-between items-center w-full">
               <div className="flex flex-col items-start">
-                <p className="font-medium text-[#999999] text-sm">Price</p>
-                <span className="font-semibold text-lg">$550,000</span>
+                <p className="font-medium text-[#999999] text-sm xl:text-lg">
+                  Price
+                </p>
+                <span className="font-semibold text-lg md:text-xl xl:text-2xl">
+                  $550,000
+                </span>
               </div>
               <button className="bg-[#703BF7] my-2 px-8 py-4 rounded-lg font-medium text-sm xl:text-lg">
                 View Property Details
@@ -151,10 +157,23 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="my-6">
-          <button className="flex items-center bg-[#1A1A1A] px-6 py-4 border border-gray-700 rounded-xl">
+        <div
+          id="div3"
+          className="flex justify-center items-center col-span-2 md:col-span-1 md:col-start-4 md:row-start-1 my-6"
+        >
+          <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-gray-700 rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
             View All Properties
           </button>
+        </div>
+        <div
+          id="div4"
+          className="flex justify-center items-center gap-1 md:gap-4 col-span-2 md:col-span-4 my-6"
+        >
+          <i className="ri-arrow-left-line bg-gray-400 px-1 md:px-2 md:py-1 rounded-2xl md:text-lg"></i>
+          <p className="font-medium text-sm md:text-base xl:text-lg">
+            01 of 60
+          </p>
+          <i className="ri-arrow-right-line bg-gray-400 px-1 md:px-2 md:py-1 rounded-2xl md:text-lg"></i>
         </div>
       </div>
     </>
