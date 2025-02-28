@@ -1,4 +1,5 @@
 import PropertyCarousel from '../component/PropertyCarousel';
+import TestimonialCarousel from '../component/TestimonialCarousal';
 
 const Home = () => {
   return (
@@ -26,7 +27,7 @@ const Home = () => {
             </div>
 
             <div className="flex md:flex-row flex-col md:gap-4 px-4 py-6 w-full">
-              <button className="my-2 md:px-4 py-4 border border-gray-700 rounded-lg font-medium text-sm xl:text-lg">
+              <button className="my-2 md:px-4 py-4 border border-[#262626] rounded-lg font-medium text-sm xl:text-lg">
                 Learn More
               </button>
               <button className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg font-medium text-sm xl:text-lg">
@@ -36,7 +37,7 @@ const Home = () => {
 
             <div className="flex flex-wrap md:flex-nowrap px-2 py-3 w-full">
               <div className="px-2 w-1/2 md:w-1/3">
-                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-gray-700 rounded-lg md:text-left text-center">
+                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-[#262626] rounded-lg md:text-left text-center">
                   <h4 className="font-bold text-2xl md:text-3xl xl:text-4xl">
                     200+
                   </h4>
@@ -46,7 +47,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="px-2 w-1/2 md:w-1/3">
-                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-gray-700 rounded-lg md:text-left text-center">
+                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-[#262626] rounded-lg md:text-left text-center">
                   <h4 className="font-bold text-2xl md:text-3xl xl:text-4xl">
                     10k+
                   </h4>
@@ -56,7 +57,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="px-2 w-full md:w-1/3">
-                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-gray-700 rounded-lg md:text-left text-center">
+                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-[#262626] rounded-lg md:text-left text-center">
                   <h4 className="font-bold text-2xl md:text-3xl xl:text-4xl">
                     16+
                   </h4>
@@ -70,9 +71,9 @@ const Home = () => {
         </div>
 
         <div className="my-6 px-4 md:px-2 py-5">
-          <div className="flex flex-row flex-wrap shadow-[0_0_25px_10px_#262626] px-2 py-3 border border-gray-700 rounded-2xl md:rounded-none w-full">
+          <div className="flex flex-row flex-wrap shadow-[0_0_25px_10px_#262626] px-2 py-3 border border-[#262626] rounded-2xl md:rounded-none w-full">
             <div className="px-2 py-2 w-1/2 md:w-1/4">
-              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-gray-700 rounded-lg w-full">
+              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-[#262626] rounded-lg w-full">
                 <img src="./home-icon.png" alt="" />
                 <p className="py-3 font-semibold text-sm md:text-base xl:text-xl text-center">
                   Find Your Dream Home
@@ -80,7 +81,7 @@ const Home = () => {
               </div>
             </div>
             <div className="px-2 py-2 w-1/2 md:w-1/4">
-              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-gray-700 rounded-lg w-full">
+              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-[#262626] rounded-lg w-full">
                 <img src="./home-icon.png" alt="" />
                 <p className="py-3 font-semibold text-sm md:text-base xl:text-xl text-center">
                   Unlock Property Value
@@ -88,7 +89,7 @@ const Home = () => {
               </div>
             </div>
             <div className="px-2 py-2 w-1/2 md:w-1/4">
-              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-gray-700 rounded-lg w-full">
+              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-[#262626] rounded-lg w-full">
                 <img src="./home-icon.png" alt="" />
                 <p className="py-3 font-semibold text-sm md:text-base xl:text-xl text-center">
                   Property Management
@@ -96,7 +97,7 @@ const Home = () => {
               </div>
             </div>
             <div className="px-2 py-2 w-1/2 md:w-1/4">
-              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-gray-700 rounded-lg w-full">
+              <div className="flex flex-col justify-center items-center bg-[#1A1A1A] px-2 py-4 border border-[#262626] rounded-lg w-full">
                 <img src="./home-icon.png" alt="" />
                 <p className="py-3 font-semibold text-sm md:text-base xl:text-xl text-center">
                   Smart Investments
@@ -108,12 +109,12 @@ const Home = () => {
       </div>
 
       {/* featured properties */}
-      <div className="grid grid-cols-4 my-10 px-6">
-        <div id="div1" className="col-span-4 md:col-span-3">
+      <div className="grid grid-cols-4 my-10 md:my-16 px-6">
+        <div id="div1" className="col-span-4 md:col-span-3 md:mx-3">
           <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
             Featured Properties
           </h3>
-          <p className="my-3 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
+          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
             Explore our handpicked selection of featured properties. Each
             listing offers a glimpse into exceptional homes and investments
             available through MyProperty.
@@ -121,19 +122,49 @@ const Home = () => {
         </div>
 
         <div
+          id="div3"
+          className="flex justify-center items-center col-span-2 md:col-span-1 my-3"
+        >
+          <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-[#262626] rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
+            View All Properties
+          </button>
+        </div>
+
+        <div
           id="div2"
-          className="col-span-4 border-gray-700 border-b overflow-hidden"
+          className="col-span-4 py-6 border-[#262626] border-b overflow-hidden"
         >
           <PropertyCarousel />
+        </div>
+      </div>
+
+      {/* testimonials */}
+      <div className="grid grid-cols-4 my-10 md:my-16 px-6">
+        <div id="div1" className="col-span-4 md:col-span-3 md:mx-3">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
+            What Our Clients Say
+          </h3>
+          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
+            Read the success stories and heartfelt testimonials from our valued
+            clients. Discover why they chose Estatein for their real estate
+            needs.
+          </p>
         </div>
 
         <div
           id="div3"
-          className="flex justify-center items-center col-span-2 md:col-span-1 md:col-start-4 md:row-start-1 my-6"
+          className="flex justify-center items-center col-span-2 md:col-span-1 my-3"
         >
-          <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-gray-700 rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
-            View All Properties
+          <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-[#262626] rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
+            View All Testimonials
           </button>
+        </div>
+
+        <div
+          id="div2"
+          className="col-span-4 py-6 border-[#262626] border-b overflow-hidden"
+        >
+          <TestimonialCarousel />
         </div>
       </div>
     </>

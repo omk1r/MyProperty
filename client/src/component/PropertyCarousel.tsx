@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 
-const properties = [
+interface property {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  price: string;
+  tags: string[];
+}
+
+const properties: property[] = [
   {
     id: 1,
     title: 'Rustic Retreat Cottage',
@@ -40,8 +49,8 @@ const properties = [
 ];
 
 export default function PropertyCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [itemsPerView, setItemsPerView] = useState<number>(1);
 
   useEffect(() => {
     const updateItemsPerView = () => {
@@ -71,7 +80,7 @@ export default function PropertyCarousel() {
 
   return (
     <div className="relative mx-auto pt-4 w-full">
-      <div className="overflow-hidden">
+      <div className="px-4 overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{
@@ -83,7 +92,7 @@ export default function PropertyCarousel() {
               key={property.id}
               className="flex-shrink-0 px-2 w-full md:w-1/3"
             >
-              <div className="flex flex-col items-center p-6 border border-gray-700 rounded-xl">
+              <div className="flex flex-col items-center p-6 border border-[#262626] rounded-xl">
                 <img src={property.image} alt="" className="w-full" />
                 <h6 className="mt-5 w-full font-semibold text-lg md:text-xl">
                   {property.title}
@@ -92,11 +101,11 @@ export default function PropertyCarousel() {
                   {property.description}
                 </p>
 
-                <div className="flex flex-row flex-wrap justify-evenly items-center my-6 w-full">
+                <div className="flex flex-row flex-wrap justify-start items-center gap-2 my-6 w-full">
                   {property.tags.map((tag, index) => (
                     <div
                       key={index}
-                      className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-gray-700 rounded-3xl font-medium text-sm xl:text-lg"
+                      className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-[#262626] rounded-3xl font-medium text-sm xl:text-lg"
                     >
                       {tag}
                     </div>
@@ -123,17 +132,11 @@ export default function PropertyCarousel() {
       </div>
 
       <div className="absolute inset-0 flex justify-between items-center">
-        <button
-          onClick={prev}
-          className="bg-white/80 hover:bg-white shadow p-1 rounded-full text-gray-800"
-        >
-          <i className="ri-arrow-left-line bg-gray-400 px-1 md:px-2 md:py-1 rounded-2xl md:text-lg"></i>
+        <button onClick={prev} className="shadow rounded-full text-gray-800">
+          <i className="ri-arrow-left-line bg-gray-400 px-1 md:px-2 py-1 md:py-2 rounded-2xl md:text-lg"></i>
         </button>
-        <button
-          onClick={next}
-          className="bg-white/80 hover:bg-white shadow p-1 rounded-full text-gray-800"
-        >
-          <i className="ri-arrow-right-line bg-gray-400 px-1 md:px-2 md:py-1 rounded-2xl md:text-lg"></i>
+        <button onClick={next} className="shadow rounded-full text-gray-800">
+          <i className="ri-arrow-right-line bg-gray-400 px-1 md:px-2 py-1 md:py-2 rounded-2xl md:text-lg"></i>
         </button>
       </div>
     </div>
