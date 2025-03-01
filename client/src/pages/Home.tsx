@@ -1,4 +1,4 @@
-import FAQCarousel from '../component/FaqCarousel';
+import FAQCarousel from '../component/FAQCarousel';
 import Footer from '../component/Footer';
 import PropertyCarousel from '../component/PropertyCarousel';
 import TestimonialCarousel from '../component/TestimonialCarousal';
