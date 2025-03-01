@@ -5,9 +5,9 @@ const About = () => {
         <div className="flex md:flex-row-reverse flex-col w-full">
           <div className="mx-3 md:mx-0 my-10 md:my-0 rounded-2xl md:rounded-none md:w-1/2 overflow-hidden">
             <img
-              src="./discover-banner-buiding.png"
+              src="./about-banner-image.png"
               alt=""
-              className="w-full h-full object-cover"
+              className="w-full h-full max-h-[548px] object-cover"
             />
           </div>
 

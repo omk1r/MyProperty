@@ -13,7 +13,7 @@ const Home = () => {
             <img
               src="./discover-banner-buiding.png"
               alt=""
-              className="w-full h-full object-cover"
+              className="w-full h-full max-h-[700px] object-cover"
             />
           </div>
 
