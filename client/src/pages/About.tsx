@@ -26,8 +26,8 @@ const About = () => {
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap px-2 py-3 w-full">
-              <div className="px-2 w-1/2 md:w-1/3">
-                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-[#262626] rounded-lg md:text-left text-center">
+              <div className="my-2 px-2 w-1/2 md:w-1/3">
+                <div className="flex flex-col justify-center md:items-start bg-[#1A1A1A] px-4 py-8 md:py-4 border border-[#262626] rounded-lg h-full md:text-left text-center">
                   <h4 className="font-bold text-2xl md:text-3xl xl:text-4xl">
                     200+
                   </h4>
@@ -36,8 +36,8 @@ const About = () => {
                   </p>
                 </div>
               </div>
-              <div className="px-2 w-1/2 md:w-1/3">
-                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-[#262626] rounded-lg md:text-left text-center">
+              <div className="my-2 px-2 w-1/2 md:w-1/3">
+                <div className="flex flex-col justify-center md:items-start bg-[#1A1A1A] px-4 py-8 md:py-4 border border-[#262626] rounded-lg h-full md:text-left text-center">
                   <h4 className="font-bold text-2xl md:text-3xl xl:text-4xl">
                     10k+
                   </h4>
@@ -46,8 +46,8 @@ const About = () => {
                   </p>
                 </div>
               </div>
-              <div className="px-2 w-full md:w-1/3">
-                <div className="bg-[#1A1A1A] my-2 px-4 py-8 md:py-4 border border-[#262626] rounded-lg md:text-left text-center">
+              <div className="my-2 px-2 w-full md:w-1/3">
+                <div className="flex flex-col justify-center md:items-start bg-[#1A1A1A] px-4 py-8 md:py-4 border border-[#262626] rounded-lg h-full md:text-left text-center">
                   <h4 className="font-bold text-2xl md:text-3xl xl:text-4xl">
                     16+
                   </h4>

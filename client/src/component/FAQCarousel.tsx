@@ -45,8 +45,10 @@ export default function FAQCarousel() {
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setItemsPerView(3); // Show 3 items on md: and larger
+      } else if (window.innerWidth >= 768) {
+        setItemsPerView(2);
       } else {
         setItemsPerView(1); // Show 1 item on smaller screens
       }
@@ -79,7 +81,10 @@ export default function FAQCarousel() {
           }}
         >
           {faqs.map((faq) => (
-            <div key={faq.id} className="flex-shrink-0 px-2 w-full md:w-1/3">
+            <div
+              key={faq.id}
+              className="flex-shrink-0 px-2 w-full md:w-1/2 lg:w-1/3"
+            >
               <div className="flex flex-col items-start px-4 md:px-6 xl:px-8 py-6 md:py-8 xl:py-10 border border-[#262626] rounded-xl h-full">
                 <h5 className="mt-5 font-semibold text-lg md:text-xl xl:text-2xl">
                   {faq.question}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-interface property {
+interface Property {
   id: number;
   title: string;
   description: string;
@@ -9,7 +9,7 @@ interface property {
   tags: string[];
 }
 
-const properties: property[] = [
+const properties: Property[] = [
   {
     id: 1,
     title: 'Rustic Retreat Cottage',
@@ -46,6 +46,42 @@ const properties: property[] = [
     price: '$1,200,000',
     tags: ['6-Bedroom', '5-Bathroom', 'Beachfront'],
   },
+  {
+    id: 5,
+    title: 'Beachfront Paradise',
+    description:
+      'Wake up to the sound of waves in this stunning beachfront home...',
+    image: './property-1.png',
+    price: '$1,200,000',
+    tags: ['6-Bedroom', '5-Bathroom', 'Beachfront'],
+  },
+  {
+    id: 6,
+    title: 'Beachfront Paradise',
+    description:
+      'Wake up to the sound of waves in this stunning beachfront home...',
+    image: './property-1.png',
+    price: '$1,200,000',
+    tags: ['6-Bedroom', '5-Bathroom', 'Beachfront'],
+  },
+  {
+    id: 7,
+    title: 'Beachfront Paradise',
+    description:
+      'Wake up to the sound of waves in this stunning beachfront home...',
+    image: './property-1.png',
+    price: '$1,200,000',
+    tags: ['6-Bedroom', '5-Bathroom', 'Beachfront'],
+  },
+  {
+    id: 8,
+    title: 'Beachfront Paradise',
+    description:
+      'Wake up to the sound of waves in this stunning beachfront home...',
+    image: './property-1.png',
+    price: '$1,200,000',
+    tags: ['6-Bedroom', '5-Bathroom', 'Beachfront'],
+  },
 ];
 
 export default function PropertyCarousel() {
@@ -54,8 +90,10 @@ export default function PropertyCarousel() {
 
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setItemsPerView(3); // Show 3 items on md: and larger
+      } else if (window.innerWidth >= 768) {
+        setItemsPerView(2);
       } else {
         setItemsPerView(1); // Show 1 item on smaller screens
       }
@@ -69,6 +107,7 @@ export default function PropertyCarousel() {
   const next = () => {
     if (currentIndex + itemsPerView < properties.length) {
       setCurrentIndex(currentIndex + itemsPerView);
+      console.log(currentIndex);
     }
   };
 
@@ -90,14 +129,14 @@ export default function PropertyCarousel() {
           {properties.map((property) => (
             <div
               key={property.id}
-              className="flex-shrink-0 px-2 w-full md:w-1/3"
+              className="flex-shrink-0 px-2 w-full md:w-1/2 lg:w-1/3"
             >
-              <div className="flex flex-col items-center p-6 border border-[#262626] rounded-xl">
+              <div className="flex flex-col items-center px-4 md:px-6 xl:px-8 py-6 md:py-8 xl:py-10 border border-[#262626] rounded-xl">
                 <img src={property.image} alt="" className="w-full" />
                 <h6 className="mt-5 w-full font-semibold text-lg md:text-xl">
                   {property.title}
                 </h6>
-                <p className="mt-2 font-medium text-[#999999] text-sm md:text-base">
+                <p className="mt-2 w-full font-medium text-[#999999] text-sm md:text-base">
                   {property.description}
                 </p>
 
@@ -112,7 +151,7 @@ export default function PropertyCarousel() {
                   ))}
                 </div>
 
-                <div className="flex flex-row justify-between items-center w-full">
+                <div className="flex flex-row justify-between items-center gap-2 w-full">
                   <div className="flex flex-col items-start">
                     <p className="font-medium text-[#999999] text-sm xl:text-lg">
                       Price
@@ -121,7 +160,7 @@ export default function PropertyCarousel() {
                       {property.price}
                     </span>
                   </div>
-                  <button className="bg-[#703BF7] my-2 px-2 md:px-8 py-4 rounded-lg font-medium text-sm xl:text-lg">
+                  <button className="bg-[#703BF7] my-2 px-2 py-4 rounded-lg font-medium text-sm xl:text-lg">
                     View Property Details
                   </button>
                 </div>
