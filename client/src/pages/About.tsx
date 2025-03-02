@@ -3,6 +3,11 @@ interface Value {
   description: string;
 }
 
+interface Achievement {
+  title: string;
+  description: string;
+}
+
 const values: Value[] = [
   {
     title: 'Trust',
@@ -23,6 +28,24 @@ const values: Value[] = [
     title: 'Our Commitment',
     description:
       'We are dedicated to providing you with the highest level of service, professionalism',
+  },
+];
+
+const achievements: Achievement[] = [
+  {
+    title: '3+ Years Of Excellence',
+    description:
+      " With over 3 years in the industry, we've amassed a wealth of knowledge and experience.",
+  },
+  {
+    title: 'Happy Clients',
+    description:
+      'Our greatest achievement is the satisfaction of our clients. Their success stories fuel our passion for what we do.',
+  },
+  {
+    title: 'Industry Recognition',
+    description:
+      "We've earned the respect of our peers and industry leaders, with accolades and awards that reflect our commitment to excellence.",
   },
 ];
 
@@ -104,7 +127,7 @@ const About = () => {
         </div>
 
         <div className="px-4 py-6 w-full md:w-2/3">
-          <div className="gap-4 grid grid-cols-1 md:grid-cols-2 shadow-[0_0_25px_10px_#262626] px-2 md:px-8 py-3 md:py-10 border border-[#262626] rounded-2xl md:rounded-xl">
+          <div className="gap-4 grid grid-cols-1 md:grid-cols-2 shadow-[0_0_25px_10px_#262626] px-2 md:px-8 py-3 md:py-10 border-[#262626] border-2 rounded-2xl md:rounded-xl">
             {values.map((value, index) => (
               <div
                 key={index}
@@ -124,6 +147,40 @@ const About = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Our Achievemnets */}
+      <div className="flex flex-col md:px-8 md:py-10 w-full">
+        <div className="flex items-center">
+          <div className="mx-4 my-6 w-[85%]">
+            <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+              Our Achievements
+            </h3>
+            <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
+              Our story is one of continuous growth and evolution. We started as
+              a small team with big dreams, determined to create a real estate
+              platform that transcended the ordinary.
+            </p>
+          </div>
+        </div>
+
+        <div className="md:flex px-4 py-6 w-full">
+          {achievements.map((achievement, index) => {
+            return (
+              <div
+                key={index}
+                className="shadow-[0_0_25px_10px_#262626] mx-2 my-2 px-6 md:px-8 py-8 border-[#262626] border-2 rounded-2xl md:rounded-xl md:w-1/3"
+              >
+                <h3 className="font-semibold text-xl md:text-2xl xl:text-3xl">
+                  {achievement.title}
+                </h3>
+                <p className="mt-4 font-medium text-[#999999] text-sm md:text-base lg:text-lg">
+                  {achievement.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
