@@ -143,7 +143,7 @@ const Home = () => {
           className="flex justify-center items-center col-span-2 md:col-span-1 my-3"
         >
           <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-[#262626] rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
-            View All FAQ's
+            View All Testimonials
           </button>
         </div>
 
@@ -173,7 +173,7 @@ const Home = () => {
           className="flex justify-center items-center col-span-2 md:col-span-1 my-3"
         >
           <button className="flex justify-center items-center bg-[#1A1A1A] md:px-6 py-4 border border-[#262626] rounded-xl w-full md:w-2/3 text-sm xl:text-lg">
-            View All Testimonials
+            View All FAQ's
           </button>
         </div>
 
