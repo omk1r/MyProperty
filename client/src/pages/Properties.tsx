@@ -1,3 +1,6 @@
+import Footer from '../component/Footer';
+import PropertyCarousel from '../component/PropertyCarousel';
+
 const Properties = () => {
   return (
     <>
@@ -73,6 +76,165 @@ const Properties = () => {
           </div>
         </div>
       </div>
+
+      {/* posiibilities */}
+      <div className="grid grid-cols-4 my-10 md:my-16 px-6">
+        <div id="div1" className="col-span-4 md:col-span-3 md:mx-3">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
+            Discover a World of Possibilities
+          </h3>
+          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
+            Our portfolio of properties is as diverse as your dreams. Explore
+            the following categories to find the perfect property that resonates
+            with your vision of home
+          </p>
+        </div>
+
+        <div
+          id="div2"
+          className="col-span-4 py-6 border-[#262626] border-b overflow-hidden"
+        >
+          <PropertyCarousel />
+        </div>
+      </div>
+
+      {/* make it happen */}
+      <div className="my-10 md:my-16 px-6">
+        <div id="div1" className="md:mx-3 md:w-[85%]">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
+            Let's Make it Happen
+          </h3>
+          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
+            Ready to take the first step toward your dream property? Fill out
+            the form below, and our real estate wizards will work their magic to
+            find your perfect match. Don't wait; let's embark on this exciting
+            journey together.
+          </p>
+        </div>
+
+        <div
+          id="div2"
+          className="flex flex-wrap my-8 px-4 py-4 border border-[#262626] rounded-xl w-full"
+        >
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-1/4"
+            htmlFor="firstName"
+          >
+            First Name
+            <input
+              type="text"
+              placeholder="Enter First Name"
+              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+            />
+          </label>
+
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-1/4"
+            htmlFor="lastName"
+          >
+            Last Name
+            <input
+              type="text"
+              placeholder="Enter Last Name"
+              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+            />
+          </label>
+
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-1/4"
+            htmlFor="email"
+          >
+            Email
+            <input
+              type="email"
+              placeholder="Enter Email"
+              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+            />
+          </label>
+
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-1/4"
+            htmlFor="phone"
+          >
+            Phone
+            <input
+              type="tel"
+              placeholder="Enter Phone Number"
+              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+            />
+          </label>
+
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-1/4"
+            htmlFor="preferredLocation"
+          >
+            Preferred Location
+            <select className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm">
+              <option value="">Select Location</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="pune">Pune</option>
+              <option value="chennai">Chennai</option>
+              <option value="delhi">Delhi</option>
+            </select>
+          </label>
+
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-1/4"
+            htmlFor="propertyType"
+          >
+            Property Type
+            <select className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm">
+              <option value="">Select Property Type</option>
+              <option value="commercial">Commercial</option>
+              <option value="residential">Residential</option>
+            </select>
+          </label>
+
+          <label
+            className="flex flex-col my-2 px-2 w-full md:w-2/4"
+            htmlFor="budget"
+          >
+            Budget
+            <select className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm">
+              <option value="">Select Budget</option>
+              <option value="0-50">0 - 50 Lakhs</option>
+              <option value="50-100">50 - 100 Lakhs</option>
+              <option value="100-200">100 - 200 Lakhs</option>
+              <option value="200+">200+ Lakhs</option>
+            </select>
+          </label>
+
+          <label className="flex flex-col my-2 px-2 w-full" htmlFor="message">
+            Message
+            <textarea
+              placeholder="Enter Your Message"
+              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+            />
+          </label>
+
+          <div className="flex md:flex-row flex-col md:justify-between items-center px-2 w-full">
+            <label
+              className="my-3 md:w-1/2 text-[#999999] text-sm"
+              htmlFor="terms"
+            >
+              <input
+                type="checkbox"
+                className="bg-[#1A1A1A] mr-2 text-[#1A1A1A]"
+              />
+              I agree to the Terms of Use and Privacy Policy
+            </label>
+
+            <div className="flex flex-col my-2 w-full md:w-1/3">
+              <button className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg">
+                Send Your Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* footer */}
+      <Footer />
     </>
   );
 };
