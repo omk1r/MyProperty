@@ -1,3 +1,6 @@
+import ClientCarousel from '../component/ClientCarousel';
+import Footer from '../component/Footer';
+
 interface Schema {
   title: string;
   description: string;
@@ -302,6 +305,27 @@ const About = () => {
           })}
         </div>
       </div>
+
+      {/* Our Clients */}
+      <div className="flex flex-col md:px-8 py-4 md:py-10 w-full">
+        <div className="mx-4 mt-6 mb-3 md:w-[85%]">
+          <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+            Our Valued Clients
+          </h3>
+          <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
+            At Estatein, we have had the privilege of working with a diverse
+            range of clients across various industries. Here are some of the
+            clients we've had the pleasure of serving
+          </p>
+        </div>
+
+        <div className="md:flex px-4 py-3 w-full">
+          <ClientCarousel />
+        </div>
+      </div>
+
+      {/* footer */}
+      <Footer />
     </>
   );
 };

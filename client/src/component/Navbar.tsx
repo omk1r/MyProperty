@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import 'remixicon/fonts/remixicon.css';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [showAd, setShowAd] = useState<boolean>(true);
@@ -50,18 +51,27 @@ const Navbar = () => {
           <span className="px-2 font-medium">MyProperty</span>
         </div>
         <div className="hidden md:flex">
-          <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+          <Link to="/" className="mx-2 font-medium md:text-sm xl:text-lg">
             Home
-          </a>
-          <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+          </Link>
+          <Link
+            to="/about-us"
+            className="mx-2 font-medium md:text-sm xl:text-lg"
+          >
             About Us
-          </a>
-          <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+          </Link>
+          <Link
+            to="/properties"
+            className="mx-2 font-medium md:text-sm xl:text-lg"
+          >
             Properties
-          </a>
-          <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+          </Link>
+          <Link
+            to="/services"
+            className="mx-2 font-medium md:text-sm xl:text-lg"
+          >
             Services
-          </a>
+          </Link>
         </div>
         <button className="hidden md:flex bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg">
           Contact Us
@@ -86,18 +96,27 @@ const Navbar = () => {
             <i className="ri-align-right w-7 h-7"></i>
           </button>
           <div className="flex flex-col gap-y-8">
-            <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+            <Link to="/" className="mx-2 font-medium md:text-sm xl:text-lg">
               Home
-            </a>
-            <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+            </Link>
+            <Link
+              to="/about-us"
+              className="mx-2 font-medium md:text-sm xl:text-lg"
+            >
               About Us
-            </a>
-            <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+            </Link>
+            <Link
+              to="/properties"
+              className="mx-2 font-medium md:text-sm xl:text-lg"
+            >
               Properties
-            </a>
-            <a href="#" className="mx-2 font-medium md:text-sm xl:text-lg">
+            </Link>
+            <Link
+              to="/services"
+              className="mx-2 font-medium md:text-sm xl:text-lg"
+            >
               Services
-            </a>
+            </Link>
           </div>
           <button className="bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg">
             Contact Us
