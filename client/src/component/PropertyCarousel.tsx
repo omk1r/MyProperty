@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Property {
   id: number;
@@ -85,6 +86,8 @@ const properties: Property[] = [
 ];
 
 export default function PropertyCarousel() {
+  const navigate = useNavigate();
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [itemsPerView, setItemsPerView] = useState<number>(1);
 
@@ -115,6 +118,10 @@ export default function PropertyCarousel() {
     if (currentIndex - itemsPerView >= 0) {
       setCurrentIndex(currentIndex - itemsPerView);
     }
+  };
+
+  const handleViewDetails = (id: number) => {
+    navigate(`/property-details/${id}`);
   };
 
   return (
@@ -160,7 +167,10 @@ export default function PropertyCarousel() {
                       {property.price}
                     </span>
                   </div>
-                  <button className="bg-[#703BF7] my-2 px-2 py-4 rounded-lg font-medium text-sm xl:text-lg">
+                  <button
+                    onClick={() => handleViewDetails(property.id)}
+                    className="bg-[#703BF7] my-2 px-2 py-4 rounded-lg font-medium text-sm xl:text-lg"
+                  >
                     View Property Details
                   </button>
                 </div>
@@ -170,7 +180,7 @@ export default function PropertyCarousel() {
         </div>
       </div>
 
-      <div className="absolute inset-0 flex justify-between items-center">
+      <div className="absolute inset-y-1/2 flex justify-between w-full">
         <button onClick={prev} className="shadow rounded-full text-gray-800">
           <i className="ri-arrow-left-line bg-gray-400 px-1 md:px-2 py-1 md:py-2 rounded-2xl md:text-lg"></i>
         </button>

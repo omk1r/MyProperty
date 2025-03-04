@@ -3,6 +3,7 @@ import About from './pages/About';
 import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import Properties from './pages/Properties';
+import PropertyDetails from './pages/PropertyDetails';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/properties" element={<Properties />} />
+        <Route path="/property-details" element={<PropertyDetails />} />
       </Routes>
     </div>
   );

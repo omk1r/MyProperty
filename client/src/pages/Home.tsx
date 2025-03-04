@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import FAQCarousel from '../component/FAQCarousel';
 import Footer from '../component/Footer';
 import PropertyCarousel from '../component/PropertyCarousel';
 import TestimonialCarousel from '../component/TestimonialCarousal';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       {/* discover banner */}
@@ -32,7 +34,10 @@ const Home = () => {
               <button className="my-2 md:px-4 py-4 border border-[#262626] rounded-lg font-medium text-sm xl:text-lg">
                 Learn More
               </button>
-              <button className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg font-medium text-sm xl:text-lg">
+              <button
+                onClick={() => navigate('/properties')}
+                className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg font-medium text-sm xl:text-lg"
+              >
                 Browse Properties
               </button>
             </div>
