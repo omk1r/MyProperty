@@ -180,12 +180,12 @@ export default function PropertyCarousel() {
         </div>
       </div>
 
-      <div className="absolute inset-y-1/2 flex justify-between w-full">
-        <button onClick={prev} className="shadow rounded-full text-gray-800">
-          <i className="ri-arrow-left-line bg-gray-400 px-1 md:px-2 py-1 md:py-2 rounded-2xl md:text-lg"></i>
+      <div className="flex justify-between items-center bg-[#141414] mx-2 mt-2 px-4 py-2 rounded-full w-full md:w-[10%]">
+        <button onClick={prev}>
+          <i className="ri-arrow-left-line px-2 py-2 border border-[#262626] rounded-full"></i>
         </button>
-        <button onClick={next} className="shadow rounded-full text-gray-800">
-          <i className="ri-arrow-right-line bg-gray-400 px-1 md:px-2 py-1 md:py-2 rounded-2xl md:text-lg"></i>
+        <button onClick={next}>
+          <i className="ri-arrow-right-line px-2 py-2 border border-[#262626] rounded-full"></i>
         </button>
       </div>
     </div>
