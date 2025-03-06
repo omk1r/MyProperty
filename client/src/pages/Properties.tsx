@@ -8,7 +8,7 @@ const Properties = () => {
       <div className="flex flex-col w-full">
         <div className="bg-gradient-to-r from-[#262626] from-0% md:px-8 py-4 md:py-10 border-[#262626] border-b">
           <div className="mx-4 mt-6 mb-3 md:w-[85%]">
-            <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+            <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
               Find Your Dream Property
             </h3>
             <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">

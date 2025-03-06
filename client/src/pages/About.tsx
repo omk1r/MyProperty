@@ -108,7 +108,7 @@ const About = () => {
 
         <div className="md:px-8 md:py-10 md:w-1/2">
           <div className="mx-4 my-6">
-            <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+            <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
               Our Journey
             </h3>
             <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
@@ -159,7 +159,7 @@ const About = () => {
       <div className="flex md:flex-row flex-col md:px-8 py-4 md:py-10 w-full">
         <div className="flex items-center md:w-1/3">
           <div className="mx-4 mt-6 mb-3">
-            <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+            <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
               Our Values
             </h3>
             <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
@@ -198,7 +198,7 @@ const About = () => {
       <div className="flex flex-col md:px-8 py-4 md:py-10 w-full">
         <div className="flex items-center">
           <div className="mx-4 mt-6 mb-3 md:w-[85%]">
-            <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+            <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
               Our Achievements
             </h3>
             <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
@@ -231,7 +231,7 @@ const About = () => {
       {/* MyProperty experience */}
       <div className="flex flex-col md:px-8 py-4 md:py-10 w-full">
         <div className="mx-4 mt-6 mb-3 md:w-[85%]">
-          <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
             Navigating the MyProperty Experience
           </h3>
           <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
@@ -266,7 +266,7 @@ const About = () => {
       {/* MyProperty team */}
       <div className="flex flex-col md:px-8 py-4 md:py-10 w-full">
         <div className="mx-4 mt-6 mb-3 md:w-[85%]">
-          <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
             Meet the MyProperty Team
           </h3>
           <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
@@ -309,7 +309,7 @@ const About = () => {
       {/* Our Clients */}
       <div className="flex flex-col md:px-8 py-4 md:py-10 w-full">
         <div className="mx-4 mt-6 mb-3 md:w-[85%]">
-          <h3 className="font-semibold text-3xl md:text-5xl xl:text-6xl">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
             Our Valued Clients
           </h3>
           <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">

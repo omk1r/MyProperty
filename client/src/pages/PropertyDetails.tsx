@@ -51,11 +51,11 @@ const PropertyDetails = () => {
     <>
       <div className="my-10 md:my-16 px-6 md:px-9">
         <div className="flex md:flex-row flex-col md:items-center py-2 w-full">
-          <h3 className="md:w-1/4 font-semibold text-xl">
+          <h3 className="md:w-1/4 font-semibold text-xl md:text-2xl xl:text-3xl">
             Seaside Serenity Villa
           </h3>
           <div className="flex justify-between items-center my-2 md:w-3/4">
-            <span className="px-2 py-1 border border-[#2a2a2a] rounded-md w-f font-medium text-sm">
+            <span className="px-2 py-1 border border-[#2a2a2a] rounded-md w-f font-medium text-sm xl:text-lg">
               Malibu, California
             </span>
             <div className="flex md:flex-col items-center md:items-start gap-1">
