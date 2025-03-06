@@ -20,17 +20,17 @@ const Services = () => {
         <div className="my-6 px-4 md:px-2 py-5">
           <div className="gap-4 grid grid-cols-2 md:grid-cols-4 shadow-[0_0_25px_10px_#262626] px-2 py-3 border border-[#262626] rounded-2xl md:rounded-none w-full">
             {[
-              'Find Your Dream Home',
-              'Unlock Property Value',
-              'Property Management',
-              'Smart Investment for you',
-            ].map((text, index) => (
+              { text: 'Find Your Dream Home', icon: 'ri-home-line' },
+              { text: 'Unlock Property Value', icon: 'ri-key-line' },
+              { text: 'Property Management', icon: 'ri-settings-3-line' },
+              { text: 'Smart Investment for you', icon: 'ri-bar-chart-line' },
+            ].map((item, index) => (
               <div key={index} className="h-full">
                 <div className="flex flex-col justify-between items-center bg-[#1A1A1A] px-2 py-4 border border-[#262626] rounded-lg h-full">
-                  <img src="./home-icon.png" alt="" />
+                  <i className={`${item.icon} text-purple-500 text-3xl`} />
                   <div>
                     <p className="py-3 font-semibold text-sm md:text-base xl:text-xl text-center">
-                      {text}
+                      {item.text}
                     </p>
                   </div>
                 </div>
@@ -63,31 +63,32 @@ const Services = () => {
               title: 'Valuation Mastery',
               description:
                 'Discover the true worth of your property with our expert valuation services.',
+              icon: 'ri-price-tag-3-line',
             },
             {
               title: 'Strategic Marketing',
               description:
                 'Selling a property requires more than just a listing; it demands a strategic marketing.',
+              icon: 'ri-advertisement-line',
             },
             {
               title: 'Negotiation Wizardry',
               description:
                 'Negotiating the best deal is an art, and our negotiation experts are masters of it.',
+              icon: 'ri-hand-coin-line',
             },
             {
               title: 'Closing Success',
               description:
                 'A successful sale is not complete until the closing. We guide you through the intricate closing process.',
+              icon: 'ri-check-double-line',
             },
           ].map((item, index) => {
             return (
-              <div className="md:px-2 py-2 w-full md:w-1/3 h-full">
-                <div
-                  key={index}
-                  className="px-4 py-4 border border-[#262626] rounded-lg"
-                >
+              <div key={index} className="md:px-2 py-2 w-full md:w-1/3 h-full">
+                <div className="px-4 py-4 border border-[#262626] rounded-lg">
                   <div className="flex items-center gap-4">
-                    <img src="./value.png" alt="" />
+                    <i className={`${item.icon} text-purple-500 text-3xl`} />
                     <h4 className="font-semibold text-lg">{item.title}</h4>
                   </div>
                   <p className="mt-3 font-medium text-[#999999] text-sm">
@@ -139,31 +140,32 @@ const Services = () => {
               title: 'Tenant Harmony',
               description:
                 'Our Tenant Management services ensure that your tenants have a smooth and reducing vacancies.',
+              icon: 'ri-user-line',
             },
             {
               title: 'Maintainance Ease',
               description:
                 'Say goodbye to property maintenance headaches. We handle all aspects of property upkeep.',
+              icon: 'ri-tools-line',
             },
             {
               title: 'Financial Peace of Mind',
               description:
                 'Managing property finances can be complex. Our financial experts take care of rent collection',
+              icon: 'ri-money-dollar-circle-line',
             },
             {
               title: 'Legal Guardian',
               description:
                 'Stay compliant with property laws and regulations effortlessly.',
+              icon: 'ri-shield-check-line',
             },
           ].map((item, index) => {
             return (
-              <div className="md:px-2 py-2 w-full md:w-1/3 h-full">
-                <div
-                  key={index}
-                  className="px-4 py-4 border border-[#262626] rounded-lg"
-                >
+              <div key={index} className="md:px-2 py-2 w-full md:w-1/3 h-full">
+                <div className="px-4 py-4 border border-[#262626] rounded-lg">
                   <div className="flex items-center gap-4">
-                    <img src="./value.png" alt="" />
+                    <i className={`${item.icon} text-purple-500 text-3xl`} />
                     <h4 className="font-semibold text-lg">{item.title}</h4>
                   </div>
                   <p className="mt-3 font-medium text-[#999999] text-sm">
@@ -228,31 +230,32 @@ const Services = () => {
               title: 'Market Insight',
               description:
                 'Stay ahead of market trends with our expert Market Analysis. We provide in-depth insights into real estate market conditions',
+              icon: 'ri-line-chart-line',
             },
             {
               title: 'ROI Assessment',
               description:
                 'Make investment decisions with confidence. Our ROI Assessment services evaluate the potential returns on your investments',
+              icon: 'ri-pie-chart-line',
             },
             {
               title: 'Customized Strategies',
               description:
                 'Every investor is unique, and so are their goals. We develop Customized Investment Strategies tailored to your specific needs',
+              icon: 'ri-lightbulb-line',
             },
             {
               title: 'Diversification Mastery',
               description:
                 'Diversify your real estate portfolio effectively. Our experts guide you in spreading your investments across various property types and locations',
+              icon: 'ri-stack-line',
             },
           ].map((item, index) => {
             return (
-              <div className="md:px-1 py-1 w-full md:w-1/2">
-                <div
-                  key={index}
-                  className="flex flex-col justify-center bg-[#141414] px-4 py-4 border border-[#3d3d3d] rounded-lg h-full"
-                >
+              <div key={index} className="md:px-1 py-1 w-full md:w-1/2">
+                <div className="flex flex-col justify-center bg-[#141414] px-4 py-4 border border-[#3d3d3d] rounded-lg h-full">
                   <div className="flex items-center gap-4">
-                    <img src="./value.png" alt="" />
+                    <i className={`${item.icon} text-purple-500 text-3xl`} />
                     <h4 className="font-semibold text-lg">{item.title}</h4>
                   </div>
                   <p className="mt-3 font-medium text-[#999999] text-sm">

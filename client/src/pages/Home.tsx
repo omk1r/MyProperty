@@ -80,17 +80,17 @@ const Home = () => {
         <div className="my-6 px-4 md:px-2 py-5">
           <div className="gap-4 grid grid-cols-2 md:grid-cols-4 shadow-[0_0_25px_10px_#262626] px-2 py-3 border border-[#262626] rounded-2xl md:rounded-none w-full">
             {[
-              'Find Your Dream Home',
-              'Unlock Property Value',
-              'Property Management',
-              'Smart Investment for you',
-            ].map((text, index) => (
+              { text: 'Find Your Dream Home', icon: 'ri-home-line' },
+              { text: 'Unlock Property Value', icon: 'ri-key-line' },
+              { text: 'Property Management', icon: 'ri-settings-3-line' },
+              { text: 'Smart Investment for you', icon: 'ri-bar-chart-line' },
+            ].map((item, index) => (
               <div key={index} className="h-full">
                 <div className="flex flex-col justify-between items-center bg-[#1A1A1A] px-2 py-4 border border-[#262626] rounded-lg h-full">
-                  <img src="./home-icon.png" alt="" />
+                  <i className={`${item.icon} text-purple-500 text-3xl`} />
                   <div>
                     <p className="py-3 font-semibold text-sm md:text-base xl:text-xl text-center">
-                      {text}
+                      {item.text}
                     </p>
                   </div>
                 </div>

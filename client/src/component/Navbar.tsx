@@ -73,9 +73,12 @@ const Navbar = () => {
             Services
           </Link>
         </div>
-        <button className="hidden md:flex bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg">
+        <Link
+          to="/contact-us"
+          className="hidden md:flex bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg"
+        >
           Contact Us
-        </button>
+        </Link>
         <button
           onClick={() => {
             setShowSidebar(true);
@@ -125,9 +128,13 @@ const Navbar = () => {
               Services
             </Link>
           </div>
-          <button className="bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg">
+          <Link
+            to="/contact-us"
+            onClick={() => setShowSidebar(false)}
+            className="bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg"
+          >
             Contact Us
-          </button>
+          </Link>
         </div>
       </nav>
     </>

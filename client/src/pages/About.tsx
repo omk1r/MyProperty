@@ -1,36 +1,47 @@
 import ClientCarousel from '../component/ClientCarousel';
 import Footer from '../component/Footer';
 
+interface Value {
+  title: string;
+  description: string;
+  icon: string;
+}
+
 interface Schema {
   title: string;
   description: string;
 }
+
 interface Team {
   img: string;
   name: string;
   designation: string;
 }
 
-const values: Schema[] = [
+const values: Value[] = [
   {
     title: 'Trust',
     description:
       'Trust is the cornerstone of every successful real estate transaction.',
+    icon: 'ri-shield-check-line',
   },
   {
     title: 'Excellence',
     description:
       'We set the bar high for ourselves. From the properties we list to the services we provide.',
+    icon: 'ri-award-line',
   },
   {
     title: 'Client-Centric',
     description:
       'Your dreams and needs are at the center of our universe. We listen, understand.',
+    icon: 'ri-user-heart-line',
   },
   {
     title: 'Our Commitment',
     description:
       'We are dedicated to providing you with the highest level of service, professionalism',
+    icon: 'ri-hand-heart-line',
   },
 ];
 
@@ -180,7 +191,7 @@ const About = () => {
                 } ${index < 2 ? 'border-b' : ''}`}
               >
                 <div className="flex items-center gap-2">
-                  <img src="./trust-star-icon.png" alt={value.title} />
+                  <i className={`text-purple-500 text-3xl ${value.icon}`}></i>
                   <h3 className="font-semibold text-lg md:text-xl xl:text-2xl">
                     {value.title}
                   </h3>
