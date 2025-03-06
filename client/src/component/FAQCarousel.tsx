@@ -9,7 +9,7 @@ interface FAQ {
 const faqs: FAQ[] = [
   {
     id: 1,
-    question: 'How do I list my property on Estatein?',
+    question: 'How do I list my property on MyPoperty?',
     answer:
       "To list your property, create an account, go to the 'List Property' section, and fill in the required details, including images, pricing, and description.",
   },
@@ -21,21 +21,21 @@ const faqs: FAQ[] = [
   },
   {
     id: 3,
-    question: 'Does Estatein charge a commission for property transactions?',
+    question: 'Does MyPoperty charge a commission for property transactions?',
     answer:
-      'Yes, Estatein charges a small commission fee for successful transactions. The exact percentage depends on the type of property and location.',
+      'Yes, MyPoperty charges a small commission fee for successful transactions. The exact percentage depends on the type of property and location.',
   },
   {
     id: 4,
     question: 'Can I schedule a virtual tour of a property?',
     answer:
-      'Yes! Estatein offers virtual tours for select properties. You can request a tour through the property listing page.',
+      'Yes! MyPoperty offers virtual tours for select properties. You can request a tour through the property listing page.',
   },
   {
     id: 5,
     question: 'How can I contact customer support?',
     answer:
-      'You can contact our support team via email at support@estatein.com or call our helpline, available 24/7.',
+      'You can contact our support team via email at support@MyPoperty.com or call our helpline, available 24/7.',
   },
 ];
 
@@ -72,7 +72,7 @@ export default function FAQCarousel() {
   };
 
   return (
-    <div className="relative mx-auto pt-4 w-full">
+    <div className="relative mx-auto w-full">
       <div className="px-4 overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"

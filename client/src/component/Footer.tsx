@@ -9,8 +9,8 @@ const Footer = () => {
           <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
             Your dream property is just a click away. Whether you're looking for
             a new home, a strategic investment, or expert real estate advice,
-            Estatein is here to assist you every step of the way. Take the first
-            step towards your real estate goals and explore our available
+            MyPoperty is here to assist you every step of the way. Take the
+            first step towards your real estate goals and explore our available
             properties or get in touch with our team for personalized
             assistance.
           </p>
@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex md:flex-row flex-col justify-center items-center gap-2 md:gap-4 bg-[#1A1A1A] py-6 font-medium text-sm xl:text-lg">
-        <p>@2023 Estatein. All Rights Reserved.</p>
+        <p>@2023 MyPoperty. All Rights Reserved.</p>
         <p>Terms & Conditions</p>
       </div>
     </footer>

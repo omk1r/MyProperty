@@ -313,7 +313,7 @@ const About = () => {
             Our Valued Clients
           </h3>
           <p className="my-6 font-medium text-gray-400 text-sm md:text-base xl:text-lg">
-            At Estatein, we have had the privilege of working with a diverse
+            At MyPoperty, we have had the privilege of working with a diverse
             range of clients across various industries. Here are some of the
             clients we've had the pleasure of serving
           </p>

@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center bg-[#1A1A1A] bg-[url('./Abstract-Design.png')] px-4 md:px-6 py-4 md:py-2">
           <div className="flex-1 text-center">
             <p className="font-medium text-xs md:text-sm xl:text-lg">
-              Discover Your Dream Property with Estatein{' '}
+              Discover Your Dream Property with MyPoperty{' '}
               <a className="underline">Learn More</a>
             </p>
           </div>
@@ -96,23 +96,30 @@ const Navbar = () => {
             <i className="ri-align-right w-7 h-7"></i>
           </button>
           <div className="flex flex-col gap-y-8">
-            <Link to="/" className="mx-2 font-medium md:text-sm xl:text-lg">
+            <Link
+              to="/"
+              onClick={() => setShowSidebar(false)}
+              className="mx-2 font-medium md:text-sm xl:text-lg"
+            >
               Home
             </Link>
             <Link
               to="/about-us"
+              onClick={() => setShowSidebar(false)}
               className="mx-2 font-medium md:text-sm xl:text-lg"
             >
               About Us
             </Link>
             <Link
               to="/properties"
+              onClick={() => setShowSidebar(false)}
               className="mx-2 font-medium md:text-sm xl:text-lg"
             >
               Properties
             </Link>
             <Link
               to="/services"
+              onClick={() => setShowSidebar(false)}
               className="mx-2 font-medium md:text-sm xl:text-lg"
             >
               Services

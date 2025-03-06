@@ -15,7 +15,7 @@ const clients: Client[] = [
     domain: 'Commercial Real Estate',
     category: 'Luxury Home Development',
     feedback:
-      "Estatein's expertise in finding the perfect office space for our expanding operations was invaluable. They truly understand our business needs.",
+      "MyPoperty's expertise in finding the perfect office space for our expanding operations was invaluable. They truly understand our business needs.",
   },
   {
     time: 'Since 2020',
@@ -23,7 +23,7 @@ const clients: Client[] = [
     domain: 'Residential Real Estate',
     category: 'Affordable Housing',
     feedback:
-      'The team at Estatein helped us secure a great location for our new housing project. Their market knowledge is top-notch.',
+      'The team at MyPoperty helped us secure a great location for our new housing project. Their market knowledge is top-notch.',
   },
   {
     time: 'Since 2018',
@@ -31,7 +31,7 @@ const clients: Client[] = [
     domain: 'Industrial Real Estate',
     category: 'Warehouse Development',
     feedback:
-      "Estatein's dedication and attention to detail made our warehouse development project a success. We couldn't have done it without them.",
+      "MyPoperty's dedication and attention to detail made our warehouse development project a success. We couldn't have done it without them.",
   },
   {
     time: 'Since 2021',
@@ -39,7 +39,7 @@ const clients: Client[] = [
     domain: 'Retail Real Estate',
     category: 'Shopping Mall Development',
     feedback:
-      'Thanks to Estatein, we found the perfect spot for our new shopping mall. Their team is professional and highly skilled.',
+      'Thanks to MyPoperty, we found the perfect spot for our new shopping mall. Their team is professional and highly skilled.',
   },
   {
     time: 'Since 2017',
@@ -47,7 +47,7 @@ const clients: Client[] = [
     domain: 'Mixed-Use Real Estate',
     category: 'Urban Development',
     feedback:
-      "Estatein's innovative approach to urban development helped us create a vibrant mixed-use community. Highly recommended!",
+      "MyPoperty's innovative approach to urban development helped us create a vibrant mixed-use community. Highly recommended!",
   },
 ];
 

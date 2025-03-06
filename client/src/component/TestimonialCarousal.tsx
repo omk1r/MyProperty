@@ -15,7 +15,7 @@ const testimonials: Testimonial[] = [
     id: 1,
     title: 'Exceptional Service!',
     description:
-      "Our experience with Estatein was outstanding. Their team's dedication and professionalism made finding our dream home a breeze. Highly recommended!",
+      "Our experience with MyPoperty was outstanding. Their team's dedication and professionalism made finding our dream home a breeze. Highly recommended!",
     image: './user.png',
     name: 'Wade Warren',
     address: 'USA, California',
@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     id: 2,
     title: 'Smooth and Hassle-Free!',
     description:
-      "Estatein made the entire home-buying process effortless. From property selection to paperwork, everything was handled professionally. Couldn't be happier!",
+      "MyPoperty made the entire home-buying process effortless. From property selection to paperwork, everything was handled professionally. Couldn't be happier!",
     image: './user.png',
     name: 'Jane Cooper',
     address: 'Canada, Toronto',
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
     id: 3,
     title: 'Highly Professional Team!',
     description:
-      'I was impressed by the expertise and dedication of the Estatein team. They truly understood my needs and found me the perfect property within my budget.',
+      'I was impressed by the expertise and dedication of the MyPoperty team. They truly understood my needs and found me the perfect property within my budget.',
     image: './user.png',
     name: 'Robert Fox',
     address: 'UK, London',

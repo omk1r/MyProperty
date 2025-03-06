@@ -138,7 +138,7 @@ const Home = () => {
           </h3>
           <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
             Read the success stories and heartfelt testimonials from our valued
-            clients. Discover why they chose Estatein for their real estate
+            clients. Discover why they chose MyPoperty for their real estate
             needs.
           </p>
         </div>
@@ -167,9 +167,9 @@ const Home = () => {
             Frequently Asked Questions
           </h3>
           <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
-            Find answers to common questions about Estatein's services, property
-            listings, and the real estate process. We're here to provide clarity
-            and assist you every step of the way.
+            Find answers to common questions about MyPoperty's services,
+            property listings, and the real estate process. We're here to
+            provide clarity and assist you every step of the way.
           </p>
         </div>
 
