@@ -13,6 +13,9 @@ router.post(
   body('password')
     .isLength({ min: 6 })
     .withMessage('password must be at least 6 characters long'),
+  body('role')
+    .isIn(['user', 'broker'])
+    .withMessage("Role must be either 'user' or 'broker'"),
   userController.createUser
 );
 

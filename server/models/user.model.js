@@ -23,12 +23,22 @@ const userSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
+  role: {
+    type: String,
+    enum: ['customer', 'broker'],
+    required: true,
+    default: 'customer',
+  },
 });
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: '24h',
-  });
+  const token = jwt.sign(
+    { _id: this._id, role: this.role },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: '24h',
+    }
+  );
   return token;
 };
 

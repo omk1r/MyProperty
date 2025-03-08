@@ -8,7 +8,12 @@ module.exports.createUser = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, role } = req.body;
+
+  const allowedRoles = ['user', 'broker'];
+  if (!allowedRoles.includes(role)) {
+    return res.status(400).json({ message: 'Invalid role specified' });
+  }
 
   const userExists = await userModel.findOne({ email });
 
@@ -25,6 +30,7 @@ module.exports.createUser = async (req, res) => {
     lastname,
     email,
     password: hashedPassword,
+    role,
   });
 
   const token = user.generateAuthToken();
