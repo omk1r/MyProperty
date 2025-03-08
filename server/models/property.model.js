@@ -30,11 +30,11 @@ const propertySchema = new mongoose.Schema({
     required: true,
   },
   images: {
-    type: [String], // Array of image URLs
+    type: [String],
     required: true,
   },
   keyFeatures: {
-    type: [String], // Array of key features
+    type: [String],
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,

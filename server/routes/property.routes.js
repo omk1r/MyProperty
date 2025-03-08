@@ -37,6 +37,48 @@ router.post(
   propertyController.createProperty
 );
 
-router.get('/');
+router.get('/all', authMiddleware.authUser, propertyController.getProperties);
+
+router.get(
+  '/:id',
+  authMiddleware.authUser,
+  propertyController.getSingleProperty
+);
+
+router.put(
+  '/:id',
+  upload.array('images', 10),
+  [
+    body('name')
+      .optional()
+      .isLength({ min: 2 })
+      .withMessage('Property name must be at least 2 characters long'),
+    body('location').optional().notEmpty().withMessage('Location is required'),
+    body('price').optional().notEmpty().withMessage('Price is required'),
+    body('description')
+      .optional()
+      .isLength({ min: 10 })
+      .withMessage('Description must be at least 10 characters long'),
+    body('bedroom')
+      .optional()
+      .isInt({ min: 1 })
+      .withMessage('Bedroom count must be at least 1'),
+    body('bathroom')
+      .optional()
+      .isInt({ min: 1 })
+      .withMessage('Bathroom count must be at least 1'),
+    body('area').optional().notEmpty().withMessage('Area is required'),
+    body('keyFeatures')
+      .optional()
+      .isArray()
+      .withMessage('Key features must be an array'),
+    body('keyFeatures.*')
+      .optional()
+      .isString()
+      .withMessage('Each key feature must be a string'),
+  ],
+  authMiddleware.authBroker,
+  propertyController.editSingleProperty
+);
 
 module.exports = router;

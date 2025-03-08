@@ -38,3 +38,87 @@ module.exports.createProperty = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+module.exports.getProperties = async (req, res) => {
+  try {
+    const properties = await propertyModel.find({});
+    res.status(201).json({ properties });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+module.exports.getSingleProperty = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const singleProperty = await propertyModel.findById(id);
+    if (!singleProperty) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    res.status(200).json(singleProperty);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+
+module.exports.editSingleProperty = async (req, res) => {
+  const { id } = req.params;
+
+  // Validate input data
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const singleProperty = await propertyModel.findById(id);
+    if (!singleProperty) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    const userId = req.user._id;
+
+    // Check user authorization
+    if (userId.toString() !== singleProperty.createdBy.toString()) {
+      return res
+        .status(401)
+        .json({ error: 'You are not authorized to access this property' });
+    }
+
+    // Prepare the update object
+    const updateData = {};
+    const {
+      name,
+      location,
+      price,
+      description,
+      bedroom,
+      bathroom,
+      area,
+      keyFeatures,
+    } = req.body;
+
+    if (name) updateData.name = name;
+    if (location) updateData.location = location;
+    if (price) updateData.price = price;
+    if (description) updateData.description = description;
+    if (bedroom) updateData.bedroom = bedroom;
+    if (bathroom) updateData.bathroom = bathroom;
+    if (area) updateData.area = area;
+    if (keyFeatures) updateData.keyFeatures = keyFeatures;
+    if (req.files && req.files.length > 0) {
+      updateData.images = req.files.map((file) => file.path);
+    }
+
+    const updatedProperty = await propertyModel.findByIdAndUpdate(
+      id,
+      { $set: updateData },
+      { new: true }
+    );
+
+    res.status(200).json(updatedProperty);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
