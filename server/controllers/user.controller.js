@@ -10,7 +10,7 @@ module.exports.createUser = async (req, res) => {
 
   const { firstname, lastname, email, password, role } = req.body;
 
-  const allowedRoles = ['user', 'broker'];
+  const allowedRoles = ['customer', 'broker'];
   if (!allowedRoles.includes(role)) {
     return res.status(400).json({ message: 'Invalid role specified' });
   }

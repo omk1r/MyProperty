@@ -36,6 +36,11 @@ const propertySchema = new mongoose.Schema({
   keyFeatures: {
     type: [String], // Array of key features
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
 });
 
 const propertyModel = mongoose.model('property', propertySchema);

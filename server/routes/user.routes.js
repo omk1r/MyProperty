@@ -6,25 +6,29 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 router.post(
   '/register',
-  body('email').isEmail().withMessage('Invalid Email'),
-  body('firstname')
-    .isLength({ min: 2 })
-    .withMessage('First name must be at least 2 characters long'),
-  body('password')
-    .isLength({ min: 6 })
-    .withMessage('password must be at least 6 characters long'),
-  body('role')
-    .isIn(['user', 'broker'])
-    .withMessage("Role must be either 'user' or 'broker'"),
+  [
+    body('email').isEmail().withMessage('Invalid Email'),
+    body('firstname')
+      .isLength({ min: 2 })
+      .withMessage('First name must be at least 2 characters long'),
+    body('password')
+      .isLength({ min: 6 })
+      .withMessage('password must be at least 6 characters long'),
+    body('role')
+      .isIn(['customer', 'broker'])
+      .withMessage("Role must be either 'customer' or 'broker'"),
+  ],
   userController.createUser
 );
 
 router.post(
   '/login',
-  body('email').isEmail().withMessage('Invalid Email'),
-  body('password')
-    .isLength({ min: 6 })
-    .withMessage('password must be at least 6 characters long'),
+  [
+    body('email').isEmail().withMessage('Invalid Email'),
+    body('password')
+      .isLength({ min: 6 })
+      .withMessage('password must be at least 6 characters long'),
+  ],
   userController.loginUser
 );
 
