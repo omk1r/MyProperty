@@ -41,7 +41,7 @@ module.exports.createProperty = async (req, res) => {
 
 module.exports.getProperties = async (req, res) => {
   try {
-    const properties = await propertyModel.find({});
+    const properties = await propertyModel.find({}).populate('createdBy');
     res.status(201).json({ properties });
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
@@ -51,7 +51,9 @@ module.exports.getProperties = async (req, res) => {
 module.exports.getSingleProperty = async (req, res) => {
   const { id } = req.params;
   try {
-    const singleProperty = await propertyModel.findById(id);
+    const singleProperty = await propertyModel
+      .findById(id)
+      .populate('createdBy');
     if (!singleProperty) {
       return res.status(404).json({ error: 'Property not found' });
     }
