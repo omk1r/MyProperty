@@ -124,3 +124,26 @@ module.exports.editSingleProperty = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+module.exports.deleteSingleProperty = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const singleProperty = await propertyModel.findById(id);
+    if (!singleProperty) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    const userId = req.user._id;
+
+    if (userId.toString() !== singleProperty.createdBy.toString()) {
+      return res
+        .status(401)
+        .json({ error: 'You are not authorized to access this property' });
+    }
+    await propertyModel.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Property deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};

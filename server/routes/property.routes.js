@@ -40,13 +40,13 @@ router.post(
 router.get('/all', authMiddleware.authUser, propertyController.getProperties);
 
 router.get(
-  '/:id',
+  '/single/:id',
   authMiddleware.authUser,
   propertyController.getSingleProperty
 );
 
 router.put(
-  '/:id',
+  '/edit/:id',
   upload.array('images', 10),
   [
     body('name')
@@ -79,6 +79,12 @@ router.put(
   ],
   authMiddleware.authBroker,
   propertyController.editSingleProperty
+);
+
+router.delete(
+  '/delete/:id',
+  authMiddleware.authBroker,
+  propertyController.deleteSingleProperty
 );
 
 module.exports = router;
