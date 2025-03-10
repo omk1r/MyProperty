@@ -6,6 +6,7 @@ import Properties from './pages/Properties';
 import PropertyDetails from './pages/PropertyDetails';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import Login from './pages/Login'; // Import the Login page
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/property-details" element={<PropertyDetails />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact-us" element={<Contact />} />
+        <Route path="/login" element={<Login />} /> {/* Add the Login route */}
       </Routes>
     </div>
   );
