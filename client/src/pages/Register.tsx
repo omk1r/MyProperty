@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Footer from '../component/Footer';
 
 const Register = () => {
@@ -8,18 +9,33 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('customer');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle register logic here
-    console.log('Firstname:', firstname);
-    console.log('Lastname:', lastname);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Role:', role);
-    // Navigate to login page after successful registration
-    navigate('/login');
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/users/register`,
+        {
+          firstname,
+          lastname,
+          email,
+          password,
+          role,
+        }
+      );
+      console.log('Registration successful:', response.data);
+      navigate('/login');
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Registration error:', error.response?.data);
+        setError(error.response?.data?.message || 'Registration failed');
+      } else {
+        console.error('Unexpected error:', error);
+        setError('An unexpected error occurred');
+      }
+    }
   };
 
   return (
@@ -29,6 +45,7 @@ const Register = () => {
           <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl text-center">
             Register to MyProperty
           </h3>
+          {error && <p className="text-red-500 text-center">{error}</p>}
           <form
             onSubmit={handleRegister}
             className="md:flex flex-wrap items-center mt-6"
@@ -75,7 +92,6 @@ const Register = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email"
                 className="bg-[#1A1A1A] my-1 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
-                required
               />
             </label>
             <label
