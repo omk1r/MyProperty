@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RegisterProperty from './pages/RegisterProperty';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/register-property" element={<RegisterProperty />} />{' '}
       </Routes>
     </div>
   );
