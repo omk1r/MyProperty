@@ -7,16 +7,8 @@ module.exports.createProperty = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const {
-    name,
-    location,
-    price,
-    description,
-    bedroom,
-    bathroom,
-    area,
-    keyFeatures,
-  } = req.body;
+  const { name, location, price, description, bedroom, bathroom, area } =
+    req.body;
   const images = req.files.map((file) => file.path);
 
   try {
@@ -29,7 +21,6 @@ module.exports.createProperty = async (req, res) => {
       bathroom,
       area,
       images,
-      keyFeatures,
       createdBy: req.user._id,
     });
 
@@ -90,16 +81,8 @@ module.exports.editSingleProperty = async (req, res) => {
 
     // Prepare the update object
     const updateData = {};
-    const {
-      name,
-      location,
-      price,
-      description,
-      bedroom,
-      bathroom,
-      area,
-      keyFeatures,
-    } = req.body;
+    const { name, location, price, description, bedroom, bathroom, area } =
+      req.body;
 
     if (name) updateData.name = name;
     if (location) updateData.location = location;
@@ -108,7 +91,6 @@ module.exports.editSingleProperty = async (req, res) => {
     if (bedroom) updateData.bedroom = bedroom;
     if (bathroom) updateData.bathroom = bathroom;
     if (area) updateData.area = area;
-    if (keyFeatures) updateData.keyFeatures = keyFeatures;
     if (req.files && req.files.length > 0) {
       updateData.images = req.files.map((file) => file.path);
     }

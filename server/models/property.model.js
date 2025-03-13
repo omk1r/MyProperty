@@ -33,9 +33,6 @@ const propertySchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
-  keyFeatures: {
-    type: [String],
-  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',

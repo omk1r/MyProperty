@@ -12,7 +12,6 @@ const RegisterProperty = () => {
   const [bathroom, setBathroom] = useState('');
   const [area, setArea] = useState('');
   const [images, setImages] = useState<File[]>([]);
-  const [keyFeatures, setKeyFeatures] = useState<string[]>([]);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -20,10 +19,6 @@ const RegisterProperty = () => {
     if (e.target.files) {
       setImages(Array.from(e.target.files));
     }
-  };
-
-  const handleKeyFeaturesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyFeatures(e.target.value.split(','));
   };
 
   const handleRegisterProperty = async (e: React.FormEvent) => {
@@ -37,11 +32,10 @@ const RegisterProperty = () => {
     formData.append('bathroom', bathroom);
     formData.append('area', area);
     images.forEach((image) => formData.append('images', image));
-    keyFeatures.forEach((feature) => formData.append('keyFeatures', feature));
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/properties/create`,
+        `${import.meta.env.VITE_BASE_URL}/property/create`,
         formData,
         {
           headers: {
@@ -175,20 +169,6 @@ const RegisterProperty = () => {
                 onChange={handleImageChange}
                 className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
                 required
-              />
-            </label>
-            <label
-              className="flex flex-col my-2 px-2 w-full"
-              htmlFor="keyFeatures"
-            >
-              Key Features (comma separated)
-              <input
-                type="text"
-                id="keyFeatures"
-                value={keyFeatures.join(',')}
-                onChange={handleKeyFeaturesChange}
-                placeholder="Enter Key Features"
-                className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
               />
             </label>
             <button

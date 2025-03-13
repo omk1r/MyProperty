@@ -24,14 +24,6 @@ router.post(
       .isInt({ min: 1 })
       .withMessage('Bathroom count must be at least 1'),
     body('area').notEmpty().withMessage('Area is required'),
-    body('keyFeatures')
-      .optional()
-      .isArray()
-      .withMessage('Key features must be an array'),
-    body('keyFeatures.*')
-      .optional()
-      .isString()
-      .withMessage('Each key feature must be a string'),
   ],
   authMiddleware.authBroker,
   propertyController.createProperty
@@ -68,14 +60,6 @@ router.put(
       .isInt({ min: 1 })
       .withMessage('Bathroom count must be at least 1'),
     body('area').optional().notEmpty().withMessage('Area is required'),
-    body('keyFeatures')
-      .optional()
-      .isArray()
-      .withMessage('Key features must be an array'),
-    body('keyFeatures.*')
-      .optional()
-      .isString()
-      .withMessage('Each key feature must be a string'),
   ],
   authMiddleware.authBroker,
   propertyController.editSingleProperty
