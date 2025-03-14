@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterProperty from './pages/RegisterProperty';
+import EditProperty from './pages/EditProperty';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register-property" element={<RegisterProperty />} />{' '}
+        <Route path="/register-property" element={<RegisterProperty />} />
+        <Route path="/edit-property" element={<EditProperty />} />
       </Routes>
     </div>
   );
