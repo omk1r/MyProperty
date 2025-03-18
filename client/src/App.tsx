@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterProperty from './pages/RegisterProperty';
 import EditProperty from './pages/EditProperty';
+import BrokerProtectedWrapper from './pages/BrokerProtectedWrapper';
 
 function App() {
   return (
@@ -24,8 +25,22 @@ function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register-property" element={<RegisterProperty />} />
-        <Route path="/edit-property" element={<EditProperty />} />
+        <Route
+          path="/register-property"
+          element={
+            <BrokerProtectedWrapper>
+              <RegisterProperty />
+            </BrokerProtectedWrapper>
+          }
+        />
+        <Route
+          path="/edit-property"
+          element={
+            <BrokerProtectedWrapper>
+              <EditProperty />
+            </BrokerProtectedWrapper>
+          }
+        />
       </Routes>
     </div>
   );
