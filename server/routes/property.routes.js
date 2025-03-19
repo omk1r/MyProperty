@@ -29,13 +29,9 @@ router.post(
   propertyController.createProperty
 );
 
-router.get('/all', authMiddleware.authUser, propertyController.getProperties);
+router.get('/all', propertyController.getProperties);
 
-router.get(
-  '/single/:id',
-  authMiddleware.authUser,
-  propertyController.getSingleProperty
-);
+router.get('/single/:id', propertyController.getSingleProperty);
 
 router.put(
   '/edit/:id',

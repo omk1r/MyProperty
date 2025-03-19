@@ -19,6 +19,7 @@ const BrokerProtectedWrapper = ({ children }: { children: ReactNode }) => {
         },
       })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           console.log(response.data);
           const role = response.data.user.role;
