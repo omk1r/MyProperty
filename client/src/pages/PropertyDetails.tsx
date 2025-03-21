@@ -180,7 +180,7 @@ const PropertyDetails = () => {
           <div className="flex md:flex-row flex-col md:items-start my-10 md:my-16 px-6 md:px-9">
             <div className="md:w-[35%]">
               <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
-                Inquire About Seaside Serenity Villa
+                Inquire About {property.name}
               </h3>
               <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
                 Interested in this property? Fill out the form below, and our

@@ -36,7 +36,7 @@ const Home = () => {
               </button>
               <button
                 onClick={() => navigate('/properties')}
-                className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg font-medium text-sm xl:text-lg"
+                className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg font-medium text-sm xl:text-lg cursor-pointer"
               >
                 Browse Properties
               </button>

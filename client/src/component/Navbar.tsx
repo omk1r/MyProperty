@@ -41,7 +41,7 @@ const Navbar = () => {
           </button>
         </div>
       )}
-      <nav className="relative flex justify-between items-center bg-[#1A1A1A] px-4 md:px-10 py-4 md:py-4 border-gray-700 border-y overflow-hidden">
+      <nav className="relative flex justify-between items-center bg-[#1A1A1A] px-4 md:px-10 py-4 md:py-4 border-gray-700 border-y">
         <div className="flex items-center">
           <img
             src="./Logo.png"
@@ -73,12 +73,15 @@ const Navbar = () => {
             Services
           </Link>
         </div>
-        <Link
-          to="/contact-us"
-          className="hidden md:flex bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg"
-        >
-          Contact Us
-        </Link>
+        <div className="hidden md:flex items-center">
+          <Link
+            to="/contact-us"
+            className="bg-[#141414] px-4 py-2 border border-gray-700 rounded-lg font-medium md:text-sm xl:text-lg"
+          >
+            Contact Us
+          </Link>
+          <UserProfile user={{ name: 'omkar', email: 'om@gmail.com' }} />
+        </div>
         <button
           onClick={() => {
             setShowSidebar(true);
@@ -135,9 +138,61 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
+
+          <UserProfile user={{ name: 'omkar', email: 'om@gmail.com' }} />
         </div>
       </nav>
     </>
   );
 };
 export default Navbar;
+
+interface User {
+  name: string;
+  email: string;
+  avatar?: string;
+}
+
+function UserProfile({ user }: { user: User }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="inline-block relative mx-2">
+      <div className="flex flex-col justify-center items-center">
+        <div className="border border-gray-300 rounded-full w-10 h-10 overflow-hidden">
+          <img
+            src={user?.avatar || '/user-icon.png'}
+            alt="Profile"
+            className="w-full h-full object-cover"
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        </div>
+      </div>
+      {isOpen && (
+        <div className="md:top-full left-1/2 z-50 absolute bg-slate-600 shadow-lg mt-1 p-2 border rounded -translate-x-1/2">
+          {user ? (
+            <div className="text-center">
+              <p className="font-semibold">{user.name}</p>
+              <p className="hidden md:block text-sm">{user.email}</p>
+              <button
+                className="bg-red-500 hover:bg-red-600 mt-1 md:mt-2 px-2 py-1 rounded w-full text-white"
+                onClick={() => console.log('Logout')}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="text-center">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 px-4 py-1 rounded w-full text-white"
+                onClick={() => console.log('Login')}
+              >
+                Login
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}

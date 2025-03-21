@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../component/Footer';
 
@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center bg-[#141414] min-h-screen text-white">
+      <div className="flex flex-col justify-center items-center bg-[#141414] px-4 py-8 text-white">
         <div className="bg-[#1A1A1A] px-6 py-8 border border-[#262626] rounded-xl w-full max-w-md">
           <h3 className="font-semibold text-4xl text-center">
             Login to MyProperty
@@ -71,11 +71,17 @@ const Login = () => {
             </label>
             <button
               type="submit"
-              className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg"
+              className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg cursor-pointer"
             >
               Login
             </button>
           </form>
+          <div className="text-[#999999] text-center">
+            Don't have an account{' '}
+            <Link to="/register" className="text-white underline">
+              Register
+            </Link>
+          </div>
         </div>
       </div>
       <Footer />

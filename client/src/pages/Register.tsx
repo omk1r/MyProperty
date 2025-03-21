@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../component/Footer';
 
@@ -127,11 +127,17 @@ const Register = () => {
             </label>
             <button
               type="submit"
-              className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg"
+              className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg cursor-pointer"
             >
               Register
             </button>
           </form>
+          <div className="text-[#999999] text-center">
+            Already have an account{' '}
+            <Link to="/login" className="text-white underline">
+              Login
+            </Link>
+          </div>
         </div>
       </div>
       <Footer />
