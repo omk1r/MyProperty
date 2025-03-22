@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import 'remixicon/fonts/remixicon.css';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Navbar = () => {
   const [showAd, setShowAd] = useState<boolean>(true);
@@ -80,7 +81,7 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
-          <UserProfile user={{ name: 'omkar', email: 'om@gmail.com' }} />
+          <UserProfile />
         </div>
         <button
           onClick={() => {
@@ -139,7 +140,7 @@ const Navbar = () => {
             Contact Us
           </Link>
 
-          <UserProfile user={{ name: 'omkar', email: 'om@gmail.com' }} />
+          <UserProfile />
         </div>
       </nav>
     </>
@@ -148,13 +149,62 @@ const Navbar = () => {
 export default Navbar;
 
 interface User {
-  name: string;
+  firstname: string;
   email: string;
   avatar?: string;
 }
 
-function UserProfile({ user }: { user: User }) {
+function UserProfile() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/users/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUser(response.data);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.error('User fecthing failed:', error.response?.data);
+        } else {
+          console.error('Unexpected error:', error);
+          localStorage.removeItem('token');
+        }
+      }
+    };
+    fetchUser();
+  }, [token]);
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/users/logout`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.data.message) {
+        setUser(null);
+        localStorage.removeItem('token');
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('User logout failed:', error.response?.data);
+      } else {
+        console.error('Unexpected error:', error);
+      }
+    }
+  };
 
   return (
     <div className="inline-block relative mx-2">
@@ -169,26 +219,27 @@ function UserProfile({ user }: { user: User }) {
         </div>
       </div>
       {isOpen && (
-        <div className="md:top-full left-1/2 z-50 absolute bg-slate-600 shadow-lg mt-1 p-2 border rounded -translate-x-1/2">
+        <div className="md:top-full right-1/2 md:right-1/3 z-50 absolute bg-slate-600 shadow-lg mt-1 p-2 border rounded transition-all translate-x-1/2 md:translate-x-0 duration-500 ease-in-out">
           {user ? (
             <div className="text-center">
-              <p className="font-semibold">{user.name}</p>
+              <p className="font-semibold">{user.firstname}</p>
               <p className="hidden md:block text-sm">{user.email}</p>
               <button
                 className="bg-red-500 hover:bg-red-600 mt-1 md:mt-2 px-2 py-1 rounded w-full text-white"
-                onClick={() => console.log('Logout')}
+                onClick={handleLogout}
               >
                 Logout
               </button>
             </div>
           ) : (
             <div className="text-center">
-              <button
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
                 className="bg-blue-500 hover:bg-blue-600 px-4 py-1 rounded w-full text-white"
-                onClick={() => console.log('Login')}
               >
                 Login
-              </button>
+              </Link>
             </div>
           )}
         </div>

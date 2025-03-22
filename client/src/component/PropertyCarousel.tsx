@@ -10,7 +10,6 @@ interface Property {
   price: string;
 }
 
-// const properties: Property[] = [
 //   {
 //     id: 1,
 //     title: 'Rustic Retreat Cottage',
@@ -113,7 +112,6 @@ export default function PropertyCarousel() {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/property/all`
       );
-      console.log(response.data.properties);
       setProperties(response.data.properties);
     };
     fetchProperties();
