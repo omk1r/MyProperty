@@ -129,3 +129,14 @@ module.exports.deleteSingleProperty = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+module.exports.getBrokerProperties = async (req, res) => {
+  const userId = req.user._id;
+
+  try {
+    const brokerProperties = await propertyModel.find({ createdBy: userId });
+    res.status(200).json({ properties: brokerProperties });
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};

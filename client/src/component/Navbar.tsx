@@ -152,6 +152,7 @@ interface User {
   firstname: string;
   email: string;
   avatar?: string;
+  role: string;
 }
 
 function UserProfile() {
@@ -171,6 +172,7 @@ function UserProfile() {
           }
         );
         setUser(response.data);
+        console.log(response.data);
       } catch (error) {
         if (axios.isAxiosError(error)) {
           console.error('User fecthing failed:', error.response?.data);
@@ -224,12 +226,23 @@ function UserProfile() {
             <div className="text-center">
               <p className="font-semibold">{user.firstname}</p>
               <p className="hidden md:block text-sm">{user.email}</p>
-              <button
-                className="bg-red-500 hover:bg-red-600 mt-1 md:mt-2 px-2 py-1 rounded w-full text-white"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
+              <div className="flex items-center mt-1">
+                {user.role == 'broker' && (
+                  <Link
+                    to="/broker-dashboard"
+                    onClick={() => setIsOpen(false)}
+                    className="bg-gradient-to-r hover:bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 me-2 px-3 py-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-white text-sm text-center cursor-pointer"
+                  >
+                    Dashboard
+                  </Link>
+                )}
+                <button
+                  className="bg-gradient-to-r hover:bg-gradient-to-br from-red-400 via-red-500 to-red-600 me-2 px-3 py-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 font-medium text-white text-sm text-center cursor-pointer"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           ) : (
             <div className="text-center">

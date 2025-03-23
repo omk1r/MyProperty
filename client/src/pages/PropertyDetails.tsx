@@ -93,12 +93,12 @@ const PropertyDetails = () => {
                   {property.images.map((src, index) => (
                     <div
                       key={index}
-                      className="flex-shrink-0 md:px-2 rounded-xl w-full md:w-1/2 overflow-hidden"
+                      className="flex flex-shrink-0 justify-center items-center md:px-2 rounded-xl w-full md:w-1/2 overflow-hidden"
                     >
                       <img
                         src={src}
                         alt={`Property ${index + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-5/6 h-5/6 object-center aspect-square"
                       />
                     </div>
                   ))}
@@ -148,7 +148,7 @@ const PropertyDetails = () => {
                       Area
                     </p>
                     <p className="text-lg md:text-xl xl:text-2xl">
-                      {property.area}
+                      {property.area} Square feet.
                     </p>
                   </div>
                 </div>

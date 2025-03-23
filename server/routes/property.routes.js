@@ -67,4 +67,10 @@ router.delete(
   propertyController.deleteSingleProperty
 );
 
+router.get(
+  '/broker-properties',
+  authMiddleware.authBroker,
+  propertyController.getBrokerProperties
+);
+
 module.exports = router;

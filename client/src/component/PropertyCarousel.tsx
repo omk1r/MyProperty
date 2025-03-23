@@ -142,7 +142,7 @@ export default function PropertyCarousel() {
           Loading....
         </div>
       ) : (
-        <div className="relative mx-auto pt-4 w-full">
+        <div className="relative mx-auto pt-4 w-full h-full">
           <div className="px-4 overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -157,7 +157,7 @@ export default function PropertyCarousel() {
                   key={property._id}
                   className="flex-shrink-0 px-2 w-full md:w-1/2 lg:w-1/3"
                 >
-                  <div className="flex flex-col items-center px-4 md:px-6 xl:px-8 py-6 md:py-8 xl:py-10 border border-[#262626] rounded-xl">
+                  <div className="flex flex-col justify-center items-center px-4 md:px-6 xl:px-8 py-6 md:py-8 xl:py-10 border border-[#262626] rounded-xl h-full">
                     <img
                       src={property.images[0]}
                       alt=""
@@ -192,7 +192,7 @@ export default function PropertyCarousel() {
                       </div>
                       <button
                         onClick={() => handleViewDetails(property._id)}
-                        className="bg-[#703BF7] my-2 px-2 py-4 rounded-lg font-medium text-sm xl:text-lg"
+                        className="bg-[#703BF7] my-2 px-2 py-4 rounded-lg font-medium text-sm xl:text-lg cursor-pointer"
                       >
                         View Property Details
                       </button>

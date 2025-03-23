@@ -167,13 +167,13 @@ const RegisterProperty = () => {
                 id="images"
                 multiple
                 onChange={handleImageChange}
-                className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+                className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-violet-500 text-sm cursor-pointer"
                 required
               />
             </label>
             <button
               type="submit"
-              className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg"
+              className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg cursor-pointer"
             >
               Register Property
             </button>

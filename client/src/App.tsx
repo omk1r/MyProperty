@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import RegisterProperty from './pages/RegisterProperty';
 import EditProperty from './pages/EditProperty';
 import BrokerProtectedWrapper from './pages/BrokerProtectedWrapper';
+import BrokerDashboard from './pages/BrokerDashboard';
 
 function App() {
   return (
@@ -34,10 +35,18 @@ function App() {
           }
         />
         <Route
-          path="/edit-property"
+          path="/edit-property/:id"
           element={
             <BrokerProtectedWrapper>
               <EditProperty />
+            </BrokerProtectedWrapper>
+          }
+        />
+        <Route
+          path="/broker-dashboard"
+          element={
+            <BrokerProtectedWrapper>
+              <BrokerDashboard />
             </BrokerProtectedWrapper>
           }
         />
