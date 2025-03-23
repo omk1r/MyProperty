@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <footer className="w-full">
@@ -15,10 +17,35 @@ const Footer = () => {
             assistance.
           </p>
         </div>
-        <div>
-          <button className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg">
+        <div className="my-2">
+          <Link
+            to="/properties"
+            className="bg-[#703BF7] my-2 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg"
+          >
             Explore Properties
-          </button>
+          </Link>
+        </div>
+      </div>
+      <div className="flex md:flex-row flex-col justify-between md:items-center px-6 md:px-10 py-10 border border-[#262626]">
+        <div className="md:w-[80%]">
+          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
+            Want to Showcase Your Properties
+          </h3>
+          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
+            Are you a broker looking to showcase your properties to a wider
+            audience? Join MyProperty today and gain access to a platform
+            designed to connect you with potential buyers and investors.
+            Register your properties now and let us help you reach your real
+            estate goals.
+          </p>
+        </div>
+        <div className="my-2">
+          <Link
+            to="/register-property"
+            className="bg-[#703BF7] my-2 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg"
+          >
+            Register Property
+          </Link>
         </div>
       </div>
 
