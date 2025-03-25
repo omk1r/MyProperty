@@ -49,7 +49,7 @@ const MessagesModal: React.FC<MessagesModalProps> = ({
 
   return (
     <div className="z-50 fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-      <div className="bg-[#1A1A1A] p-6 rounded-lg w-full max-w-3xl">
+      <div className="bg-[#1A1A1A] mx-4 p-6 rounded-lg w-full max-w-3xl">
         <h2 className="mb-4 font-semibold text-white text-xl">Enquiries</h2>
         <button
           onClick={onClose}
