@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,10 +9,14 @@ interface Property {
   price: string;
 }
 
-export default function PropertyCarousel() {
+interface FilteredPropertyCarouselProps {
+  properties: Property[];
+}
+
+export default function FilteredPropertyCarousel({
+  properties,
+}: FilteredPropertyCarouselProps) {
   const navigate = useNavigate();
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [itemsPerView, setItemsPerView] = useState<number>(1);
 
@@ -33,21 +36,9 @@ export default function PropertyCarousel() {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
-  useEffect(() => {
-    const fetchProperties = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/property/all`
-      );
-      setProperties(response.data.properties);
-    };
-    fetchProperties();
-    setLoading(false);
-  }, []);
-
   const next = () => {
     if (currentIndex + itemsPerView < properties.length) {
       setCurrentIndex(currentIndex + itemsPerView);
-      console.log(currentIndex);
     }
   };
 
@@ -63,9 +54,9 @@ export default function PropertyCarousel() {
 
   return (
     <>
-      {loading ? (
-        <div className="mt-5 w-full font-semibold text-lg md:text-xl">
-          Loading....
+      {properties.length === 0 ? (
+        <div className="mt-5 w-full font-semibold text-lg md:text-xl text-center">
+          No properties found
         </div>
       ) : (
         <div className="relative mx-auto pt-4 w-full h-full">
@@ -96,18 +87,7 @@ export default function PropertyCarousel() {
                       {property.description}
                     </p>
 
-                    {/* <div className="flex flex-row flex-wrap justify-start items-center gap-2 my-6 w-full">
-                      {property.map((tag, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center bg-[#1A1A1A] px-3 py-2 border border-[#262626] rounded-3xl font-medium text-sm xl:text-lg"
-                        >
-                          {tag}
-                        </div>
-                      ))}
-                    </div> */}
-
-                    <div className="flex flex-row justify-between items-center gap-2 w-full">
+                    <div className="flex flex-row justify-between items-center gap-2 mt-4 w-full">
                       <div className="flex flex-col items-start">
                         <p className="font-medium text-[#999999] text-sm xl:text-lg">
                           Price
@@ -141,4 +121,15 @@ export default function PropertyCarousel() {
       )}
     </>
   );
+}
+
+{
+  /* 
+
+    
+
+
+    
+    
+    */
 }

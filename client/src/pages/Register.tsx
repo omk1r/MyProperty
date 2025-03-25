@@ -124,12 +124,15 @@ const Register = () => {
                 <option value="customer">Customer</option>
                 <option value="broker">Broker</option>
               </select>
+              <p className="font-semibold text-indigo-500 text-sm">
+                * Select broker if you want to register properties
+              </p>
             </label>
             <button
               type="submit"
               className="bg-[#703BF7] my-4 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg cursor-pointer"
             >
-              Register
+              Sign Up
             </button>
           </form>
           <div className="text-[#999999] text-center">

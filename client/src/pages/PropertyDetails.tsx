@@ -39,7 +39,6 @@ const PropertyDetails = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/property/single/${id}`
       );
-      console.log(response.data);
       setProperty(response.data);
     };
     fetchProperty();
@@ -279,9 +278,10 @@ const PropertyDetails = () => {
               <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
                 At MyProperty, transparency is key. We want you to have a clear
                 understanding of all costs associated with your property
-                investment. Below, we break down the pricing for Seaside
-                Serenity Villa to help you make an informed decision
+                investment. Below, we break down the pricing for{' '}
+                {property?.name} to help you make an informed decision.
               </p>
+              <div className="md:flex md:items-center bg-[#1A1A1A] my-3 md:my-5 px-3 py-3 md:py-1 border border-[#262626] rounded-lg"></div>
               <div className="md:flex md:items-center bg-[#1A1A1A] my-3 md:my-5 px-3 py-3 md:py-1 border border-[#262626] rounded-lg">
                 <h4 className="my-2 md:px-2 border-[#262626] md:border-r font-semibold text-lg">
                   Note
@@ -300,7 +300,7 @@ const PropertyDetails = () => {
                   Listing Price
                 </span>
                 <span className="font-semibold text-lg md:text-3xl xl:text-4xl">
-                  $125,00,000
+                  ₹{property?.price}
                 </span>
               </div>
 
@@ -313,51 +313,57 @@ const PropertyDetails = () => {
                     </button>
                   </div>
                   <div className="flex md:flex-row flex-col flex-wrap divide-[#262626] w-full">
-                    {[
-                      {
-                        name: 'Property Transfer Tax',
-                        amount: '$25000',
-                        description:
-                          'Based on sales price and local regulation',
-                      },
-                      {
-                        name: 'Homeowners Association Fee',
-                        amount: '$500',
-                        description: 'Monthly fee for community maintenance',
-                      },
-                      {
-                        name: 'Inspection Fee',
-                        amount: '$300',
-                        description: 'One-time fee for property inspection',
-                      },
-                      {
-                        name: 'Title Insurance',
-                        amount: '$1500',
-                        description: 'Protects against title defects',
-                      },
-                      {
-                        name: 'Legal Fees',
-                        amount: '$2000',
-                        description: 'Covers legal documentation and services',
-                      },
-                    ].map((fee, index) => (
-                      <div
-                        className="md:px-3 py-2 border-[#262626] border-t w-full md:w-1/2"
-                        key={index}
-                      >
-                        <span className="text-[#999999] text-sm">
-                          {fee.name}
-                        </span>
-                        <div className="flex flex-row items-center gap-2 my-2">
-                          <span className="font-semibold text-lg">
-                            {fee.amount}
+                    {property &&
+                      [
+                        {
+                          name: 'Property Transfer Tax',
+                          amount: `₹${(
+                            parseFloat(property.price) * 0.02
+                          ).toFixed(2)}`,
+                          description:
+                            'Based on sales price and local regulation',
+                        },
+                        {
+                          name: 'Homeowners Association Fee',
+                          amount: '₹500',
+                          description: 'Monthly fee for community maintenance',
+                        },
+                        {
+                          name: 'Inspection Fee',
+                          amount: '₹300',
+                          description: 'One-time fee for property inspection',
+                        },
+                        {
+                          name: 'Title Insurance',
+                          amount: `₹${(
+                            parseFloat(property.price) * 0.01
+                          ).toFixed(2)}`,
+                          description: 'Protects against title defects',
+                        },
+                        {
+                          name: 'Legal Fees',
+                          amount: '₹2000',
+                          description:
+                            'Covers legal documentation and services',
+                        },
+                      ].map((fee, index) => (
+                        <div
+                          className="md:px-3 py-2 border-[#262626] border-t w-full md:w-1/2"
+                          key={index}
+                        >
+                          <span className="text-[#999999] text-sm">
+                            {fee.name}
                           </span>
-                          <span className="bg-[#1a1a1a] px-2 py-1 border border-[#262626] rounded-lg md:rounded-2xl text-[#999999] text-sm">
-                            {fee.description}
-                          </span>
+                          <div className="flex flex-row items-center gap-2 my-2">
+                            <span className="font-semibold text-lg">
+                              {fee.amount}
+                            </span>
+                            <span className="bg-[#1a1a1a] px-2 py-1 border border-[#262626] rounded-lg md:rounded-2xl text-[#999999] text-sm">
+                              {fee.description}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
 
@@ -372,12 +378,12 @@ const PropertyDetails = () => {
                     {[
                       {
                         name: 'Home Inspection',
-                        amount: '$500',
+                        amount: '₹500',
                         description: 'Recommended for due diligence',
                       },
                       {
                         name: 'Property Insurance ',
-                        amount: '$500',
+                        amount: '₹500',
                         description:
                           'Annual cost for Comprehensive property insurance',
                       },
@@ -410,45 +416,54 @@ const PropertyDetails = () => {
                     </button>
                   </div>
                   <div className="flex md:flex-row flex-col flex-wrap divide-[#262626] w-full">
-                    {[
-                      {
-                        name: 'Listing Price',
-                        amount: '$125000',
-                        description: 'now',
-                      },
-                      {
-                        name: 'Additional Fees',
-                        amount: '$29,700',
-                        description: 'Property transfer tax,legal fees',
-                      },
-                      {
-                        name: 'Down Payment',
-                        amount: '$25000',
-                        description: '20x',
-                      },
-                      {
-                        name: 'Mortgage amount',
-                        amount: '$10000',
-                        description: 'If Applicable',
-                      },
-                    ].map((fee, index) => (
-                      <div
-                        className="md:px-3 py-2 border-[#262626] border-t w-full md:w-1/2"
-                        key={index}
-                      >
-                        <span className="text-[#999999] text-sm">
-                          {fee.name}
-                        </span>
-                        <div className="flex flex-row items-center gap-2 my-2">
-                          <span className="font-semibold text-lg">
-                            {fee.amount}
+                    {property &&
+                      [
+                        {
+                          name: 'Listing Price',
+                          amount: `₹${property.price}`,
+                          description: 'Base price of the property',
+                        },
+                        {
+                          name: 'Additional Fees',
+                          amount: `₹${(
+                            parseFloat(property.price) * 0.02 +
+                            2000
+                          ).toFixed(2)}`,
+                          description: 'Property transfer tax and legal fees',
+                        },
+                        {
+                          name: 'Down Payment',
+                          amount: `₹${(
+                            parseFloat(property.price) * 0.2
+                          ).toFixed(2)}`,
+                          description: '20% of the listing price',
+                        },
+                        {
+                          name: 'Mortgage Amount',
+                          amount: `₹${(
+                            parseFloat(property.price) * 0.8
+                          ).toFixed(2)}`,
+                          description:
+                            'If applicable, 80% of the listing price',
+                        },
+                      ].map((fee, index) => (
+                        <div
+                          className="md:px-3 py-2 border-[#262626] border-t w-full md:w-1/2"
+                          key={index}
+                        >
+                          <span className="text-[#999999] text-sm">
+                            {fee.name}
                           </span>
-                          <span className="bg-[#1a1a1a] px-2 py-1 border border-[#262626] rounded-lg md:rounded-2xl text-[#999999] text-sm">
-                            {fee.description}
-                          </span>
+                          <div className="flex flex-row items-center gap-2 my-2">
+                            <span className="font-semibold text-lg">
+                              {fee.amount}
+                            </span>
+                            <span className="bg-[#1a1a1a] px-2 py-1 border border-[#262626] rounded-lg md:rounded-2xl text-[#999999] text-sm">
+                              {fee.description}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
               </div>

@@ -1,7 +1,102 @@
 import Footer from '../component/Footer';
-import PropertyCarousel from '../component/PropertyCarousel';
+import FilteredPropertyCarousel from '../component/FilteredPropertiesCarousel';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
+interface Property {
+  _id: string;
+  name: string;
+  description: string;
+  images: string[];
+  price: string;
+  location: string;
+  bedroom: number;
+  bathroom: number;
+}
 
 const Properties = () => {
+  const [allProperties, setAllProperties] = useState<Property[]>([]);
+  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useState({
+    searchTerm: '',
+    location: '',
+    propertyType: '',
+    priceRange: '',
+    bedrooms: '',
+    bathrooms: '',
+  });
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/property/all`
+        );
+        setAllProperties(response.data.properties);
+        setFilteredProperties(response.data.properties);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching properties:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
+  const handleSearch = () => {
+    const filtered = allProperties.filter((property) => {
+      const matchLocation =
+        !searchParams.location ||
+        property.location.toLowerCase() === searchParams.location.toLowerCase();
+
+      const matchPriceRange =
+        !searchParams.priceRange ||
+        (searchParams.priceRange === '0-50' &&
+          parseFloat(property.price) < 500000) ||
+        (searchParams.priceRange === '50-100' &&
+          parseFloat(property.price) >= 500000 &&
+          parseFloat(property.price) < 1000000) ||
+        (searchParams.priceRange === '100-200' &&
+          parseFloat(property.price) >= 1000000 &&
+          parseFloat(property.price) < 2000000) ||
+        (searchParams.priceRange === '200+' &&
+          parseFloat(property.price) >= 2000000);
+
+      const matchSearchTerm =
+        !searchParams.searchTerm ||
+        property.name
+          .toLowerCase()
+          .includes(searchParams.searchTerm.toLowerCase());
+
+      const matchBedrooms =
+        !searchParams.bedrooms ||
+        (searchParams.bedrooms === '1' && Number(property.bedroom) === 1) ||
+        (searchParams.bedrooms === '2' && Number(property.bedroom) === 2) ||
+        (searchParams.bedrooms === '3' && Number(property.bedroom) === 3) ||
+        (searchParams.bedrooms === '4+' && Number(property.bedroom) >= 4);
+
+      const matchBathrooms =
+        !searchParams.bathrooms ||
+        (searchParams.bathrooms === '1' && Number(property.bathroom) === 1) ||
+        (searchParams.bathrooms === '2' && Number(property.bathroom) === 2) ||
+        (searchParams.bathrooms === '3' && Number(property.bathroom) === 3) ||
+        (searchParams.bathrooms === '4+' && Number(property.bathroom) >= 4);
+
+      return (
+        matchLocation &&
+        matchPriceRange &&
+        matchSearchTerm &&
+        matchBedrooms &&
+        matchBathrooms
+      );
+    });
+
+    setFilteredProperties(filtered);
+    console.log(filtered);
+  };
+
   return (
     <>
       {/* find property banner */}
@@ -26,6 +121,13 @@ const Properties = () => {
               type="text"
               className="px-2 py-2 focus:outline-none w-2/3 h-full text-sm"
               placeholder="Search For A Property"
+              value={searchParams.searchTerm}
+              onChange={(e) =>
+                setSearchParams((prev) => ({
+                  ...prev,
+                  searchTerm: e.target.value,
+                }))
+              }
             />{' '}
             <div>
               <img
@@ -38,7 +140,16 @@ const Properties = () => {
 
           <div className="bg-[#1A1A1A] my-6 md:my-0 px-4 py-4 rounded-xl w-full md:w-[80%]">
             <div className="flex md:flex-row flex-col md:space-x-4 space-y-4 md:space-y-0">
-              <select className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm">
+              <select
+                className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm"
+                value={searchParams.location}
+                onChange={(e) =>
+                  setSearchParams((prev) => ({
+                    ...prev,
+                    location: e.target.value,
+                  }))
+                }
+              >
                 <option value="">Location</option>
                 <option value="mumbai">Mumbai</option>
                 <option value="pune">Pune</option>
@@ -46,13 +157,16 @@ const Properties = () => {
                 <option value="delhi">Delhi</option>
               </select>
 
-              <select className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm">
-                <option value="">Property Type</option>
-                <option value="commercial">Commercial</option>
-                <option value="residential">Residential</option>
-              </select>
-
-              <select className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm">
+              <select
+                className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm"
+                value={searchParams.priceRange}
+                onChange={(e) =>
+                  setSearchParams((prev) => ({
+                    ...prev,
+                    priceRange: e.target.value,
+                  }))
+                }
+              >
                 <option value="">Price Range</option>
                 <option value="0-50">0 - 50 Lakhs</option>
                 <option value="50-100">50 - 100 Lakhs</option>
@@ -60,25 +174,54 @@ const Properties = () => {
                 <option value="200+">200+ Lakhs</option>
               </select>
 
-              <select className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm">
-                <option value="">Build Year</option>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
+              <select
+                className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm"
+                value={searchParams.bedrooms}
+                onChange={(e) =>
+                  setSearchParams((prev) => ({
+                    ...prev,
+                    bedrooms: e.target.value,
+                  }))
+                }
+              >
+                <option value="">Bedrooms</option>
+                <option value="1">1 Bedroom</option>
+                <option value="2">2 Bedrooms</option>
+                <option value="3">3 Bedrooms</option>
+                <option value="4+">4+ Bedrooms</option>
               </select>
+
+              <select
+                className="bg-[#141414] px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full md:w-1/4 text-[#999999] text-sm"
+                value={searchParams.bathrooms}
+                onChange={(e) =>
+                  setSearchParams((prev) => ({
+                    ...prev,
+                    bathrooms: e.target.value,
+                  }))
+                }
+              >
+                <option value="">Bathrooms</option>
+                <option value="1">1 Bathroom</option>
+                <option value="2">2 Bathrooms</option>
+                <option value="3">3 Bathrooms</option>
+                <option value="4+">4+ Bathrooms</option>
+              </select>
+            </div>
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={handleSearch}
+                className="bg-[#703BF7] px-6 py-3 rounded-lg text-white"
+              >
+                Search Properties
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* posiibilities */}
-      <div className="grid grid-cols-4 my-10 md:my-16 px-6">
+      {/* Possibilities section */}
+      <div className="grid grid-cols-4 my-10 px-6">
         <div id="div1" className="col-span-4 md:col-span-3 md:mx-3">
           <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
             Discover a World of Possibilities
@@ -94,146 +237,14 @@ const Properties = () => {
           id="div2"
           className="col-span-4 py-6 border-[#262626] border-b overflow-hidden"
         >
-          <PropertyCarousel />
+          {loading ? (
+            <div className="text-center">Loading...</div>
+          ) : (
+            <FilteredPropertyCarousel properties={filteredProperties} />
+          )}
         </div>
       </div>
 
-      {/* make it happen */}
-      <div className="my-10 md:my-16 px-6">
-        <div id="div1" className="md:mx-3 md:w-[85%]">
-          <h3 className="font-semibold text-3xl md:text-4xl xl:text-5xl">
-            Let's Make it Happen
-          </h3>
-          <p className="my-3 md:my-5 font-medium text-[#999999] text-sm md:text-base xl:text-lg">
-            Ready to take the first step toward your dream property? Fill out
-            the form below, and our real estate wizards will work their magic to
-            find your perfect match. Don't wait; let's embark on this exciting
-            journey together.
-          </p>
-        </div>
-
-        <div
-          id="div2"
-          className="flex flex-wrap my-8 px-4 py-4 border border-[#262626] rounded-xl w-full"
-        >
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-1/4"
-            htmlFor="firstName"
-          >
-            First Name
-            <input
-              type="text"
-              placeholder="Enter First Name"
-              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
-            />
-          </label>
-
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-1/4"
-            htmlFor="lastName"
-          >
-            Last Name
-            <input
-              type="text"
-              placeholder="Enter Last Name"
-              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
-            />
-          </label>
-
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-1/4"
-            htmlFor="email"
-          >
-            Email
-            <input
-              type="email"
-              placeholder="Enter Email"
-              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
-            />
-          </label>
-
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-1/4"
-            htmlFor="phone"
-          >
-            Phone
-            <input
-              type="tel"
-              placeholder="Enter Phone Number"
-              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
-            />
-          </label>
-
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-1/4"
-            htmlFor="preferredLocation"
-          >
-            Preferred Location
-            <select className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm">
-              <option value="">Select Location</option>
-              <option value="mumbai">Mumbai</option>
-              <option value="pune">Pune</option>
-              <option value="chennai">Chennai</option>
-              <option value="delhi">Delhi</option>
-            </select>
-          </label>
-
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-1/4"
-            htmlFor="propertyType"
-          >
-            Property Type
-            <select className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm">
-              <option value="">Select Property Type</option>
-              <option value="commercial">Commercial</option>
-              <option value="residential">Residential</option>
-            </select>
-          </label>
-
-          <label
-            className="flex flex-col my-2 px-2 w-full md:w-2/4"
-            htmlFor="budget"
-          >
-            Budget
-            <select className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm">
-              <option value="">Select Budget</option>
-              <option value="0-50">0 - 50 Lakhs</option>
-              <option value="50-100">50 - 100 Lakhs</option>
-              <option value="100-200">100 - 200 Lakhs</option>
-              <option value="200+">200+ Lakhs</option>
-            </select>
-          </label>
-
-          <label className="flex flex-col my-2 px-2 w-full" htmlFor="message">
-            Message
-            <textarea
-              placeholder="Enter Your Message"
-              className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
-            />
-          </label>
-
-          <div className="flex md:flex-row flex-col md:justify-between items-center px-2 w-full">
-            <label
-              className="my-3 md:w-1/2 text-[#999999] text-sm"
-              htmlFor="terms"
-            >
-              <input
-                type="checkbox"
-                className="bg-[#1A1A1A] mr-2 text-[#1A1A1A]"
-              />
-              I agree to the Terms of Use and Privacy Policy
-            </label>
-
-            <div className="flex flex-col my-2 w-full md:w-1/3">
-              <button className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg">
-                Send Your Message
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* footer */}
       <Footer />
     </>
   );
