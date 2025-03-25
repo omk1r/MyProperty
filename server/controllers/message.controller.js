@@ -27,7 +27,8 @@ module.exports.sendMessage = async (req, res) => {
 
     res.status(201).json(newMessage);
   } catch (err) {
-    res.status(401).json({ errors: 'Server error', err });
+    res.status(500).json({ errors: 'Server error' });
+    console.log(err);
   }
 };
 
@@ -38,8 +39,6 @@ module.exports.getMessages = async (req, res) => {
   if (!id) {
     return res.status(400).json({ error: 'Property ID is required' });
   }
-
-  console.log(id, broker.toString());
 
   try {
     const property = await propertyModel.findOne({

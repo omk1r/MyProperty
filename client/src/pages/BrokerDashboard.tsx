@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import MessagesModal from '../component/MessagesModal';
 
 interface Property {
   _id: string;
@@ -18,6 +19,9 @@ const BrokerDashboard = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [selectedPropertyId, setSelectedPropertyId] = useState<string | null>(
+    null
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,6 +72,14 @@ const BrokerDashboard = () => {
     navigate(`/edit-property/${id}`);
   };
 
+  const handleViewEnquiries = (id: string) => {
+    setSelectedPropertyId(id);
+  };
+
+  const closeMessagesModal = () => {
+    setSelectedPropertyId(null);
+  };
+
   return (
     <div className="bg-[#141414] p-6 min-h-screen text-white">
       <h1 className="my-6 mb-6 font-semibold text-xl md:text-3xl xl:text-5xl">
@@ -103,10 +115,22 @@ const BrokerDashboard = () => {
               >
                 Delete
               </button>
+              <button
+                onClick={() => handleViewEnquiries(property._id)}
+                className="bg-gradient-to-br hover:bg-gradient-to-bl from-green-500 to-gray-400 me-2 mb-2 px-5 py-2.5 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800 font-medium text-white text-sm text-center cursor-pointer"
+              >
+                Enquiries
+              </button>
             </div>
           </div>
         ))}
       </div>
+      {selectedPropertyId && (
+        <MessagesModal
+          propertyId={selectedPropertyId}
+          onClose={closeMessagesModal}
+        />
+      )}
     </div>
   );
 };

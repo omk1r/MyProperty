@@ -226,7 +226,7 @@ function UserProfile() {
             <div className="text-center">
               <p className="font-semibold">{user.firstname}</p>
               <p className="hidden md:block text-sm">{user.email}</p>
-              <div className="flex items-center mt-1">
+              <div className="flex justify-center items-center mt-1">
                 {user.role == 'broker' && (
                   <Link
                     to="/broker-dashboard"

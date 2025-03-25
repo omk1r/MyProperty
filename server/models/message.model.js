@@ -24,13 +24,11 @@ const messageSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
       minLength: [5, 'Email must be at least 5 characters long'],
     },
     phone: {
       type: String,
       required: true,
-      unique: true,
       minLength: [10, 'Phone must be at least 5 characters long'],
     },
     message: {

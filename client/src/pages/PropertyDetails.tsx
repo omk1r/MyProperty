@@ -22,6 +22,80 @@ const PropertyDetails = () => {
   const [property, setProperty] = useState<Property>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(1);
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/property/single/${id}`
+        );
+        setProperty(response.data);
+      } catch (error) {
+        console.error('Error fetching property:', error);
+      }
+    };
+
+    fetchProperty();
+  }, [id]);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('You must login first');
+      return;
+    }
+
+    setLoading(true);
+    setSuccess('');
+    setError('');
+
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/message/send`,
+        {
+          ...formData,
+          propertyId: property?._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setSuccess('Your message has been sent successfully!');
+      setFormData({
+        firstname: '',
+        lastname: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setError('Failed to send your message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     // Update the number of visible images based on screen width
@@ -32,16 +106,6 @@ const PropertyDetails = () => {
     updateItemsPerView();
     window.addEventListener('resize', updateItemsPerView);
     return () => window.removeEventListener('resize', updateItemsPerView);
-  }, []);
-
-  useEffect(() => {
-    const fetchProperty = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/property/single/${id}`
-      );
-      setProperty(response.data);
-    };
-    fetchProperty();
   }, []);
 
   const next = () => {
@@ -188,85 +252,81 @@ const PropertyDetails = () => {
                 may have.
               </p>
             </div>
-            <div className="flex flex-wrap px-4 py-4 border border-[#262626] rounded-xl w-full md:w-[65%]">
-              <label
-                className="flex flex-col my-2 px-2 w-full md:w-1/2"
-                htmlFor="firstName"
-              >
+            <form
+              onSubmit={handleSendMessage}
+              className="flex flex-wrap px-4 py-4 border border-[#262626] rounded-xl w-full md:w-[65%]"
+            >
+              <label className="flex flex-col my-2 px-2 w-full md:w-1/2">
                 First Name
                 <input
                   type="text"
+                  name="firstname"
+                  value={formData.firstname}
+                  onChange={handleInputChange}
                   placeholder="Enter First Name"
                   className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+                  required
                 />
               </label>
-
-              <label
-                className="flex flex-col my-2 px-2 w-full md:w-1/2"
-                htmlFor="lastName"
-              >
+              <label className="flex flex-col my-2 px-2 w-full md:w-1/2">
                 Last Name
                 <input
                   type="text"
+                  name="lastname"
+                  value={formData.lastname}
+                  onChange={handleInputChange}
                   placeholder="Enter Last Name"
                   className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+                  required
                 />
               </label>
-
-              <label
-                className="flex flex-col my-2 px-2 w-full md:w-1/2"
-                htmlFor="email"
-              >
+              <label className="flex flex-col my-2 px-2 w-full md:w-1/2">
                 Email
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder="Enter Email"
                   className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+                  required
                 />
               </label>
-
-              <label
-                className="flex flex-col my-2 px-2 w-full md:w-1/2"
-                htmlFor="phone"
-              >
+              <label className="flex flex-col my-2 px-2 w-full md:w-1/2">
                 Phone
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   placeholder="Enter Phone Number"
                   className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+                  required
                 />
               </label>
-
-              <label
-                className="flex flex-col my-2 px-2 w-full"
-                htmlFor="message"
-              >
+              <label className="flex flex-col my-2 px-2 w-full">
                 Message
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Enter Your Message"
                   className="bg-[#1A1A1A] my-2 px-3 py-3 border border-[#262626] rounded-md focus:outline-none w-full text-[#999999] text-sm"
+                  required
                 />
               </label>
-
-              <div className="flex md:flex-row flex-col md:justify-between items-center px-2 w-full">
-                <label
-                  className="my-3 md:w-1/2 text-[#999999] text-sm"
-                  htmlFor="terms"
+              <div className="flex flex-col my-2 w-full">
+                <button
+                  type="submit"
+                  className="bg-[#703BF7] my-2 px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg"
+                  disabled={loading}
                 >
-                  <input
-                    type="checkbox"
-                    className="bg-[#1A1A1A] mr-2 text-[#1A1A1A]"
-                  />
-                  I agree to the Terms of Use and Privacy Policy
-                </label>
-
-                <div className="flex flex-col my-2 w-full md:w-1/3">
-                  <button className="bg-[#703BF7] my-2 md:px-4 py-4 rounded-lg w-full font-medium text-sm xl:text-lg">
-                    Send Your Message
-                  </button>
-                </div>
+                  {loading ? 'Sending...' : 'Send Your Message'}
+                </button>
+                {success && <p className="mt-2 text-green-500">{success}</p>}
+                {error && <p className="mt-2 text-red-500">{error}</p>}
               </div>
-            </div>
+            </form>
           </div>
 
           {/* pricing details */}
